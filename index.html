@@ -1682,5 +1682,52 @@ document.addEventListener('keydown', e => {
   <div class="pm-content" id="pm-content"></div>
 </div>
 
+  <script>
+(async function logVisitor() {
+  try {
+    const sessionKey = 'visitor_logged_once';
+    if (sessionStorage.getItem(sessionKey)) return;
+
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxNL2NJZlCXC7qjTg3oy7aJ8wbH1GV-cEPUV-W4ro02utPzh4gzo3r-ieShPkfepLRT/exec';
+
+    const ipRes = await fetch('https://api.ipify.org?format=json');
+    const ipData = await ipRes.json();
+    const ip = ipData.ip || '';
+
+    const geoRes = await fetch(`https://ipapi.co/${ip}/json/`);
+    const geoData = await geoRes.json();
+
+    const payload = {
+      ip: ip,
+      city: geoData.city || '',
+      region: geoData.region || '',
+      country: geoData.country_name || '',
+      timezone: geoData.timezone || '',
+      org: geoData.org || '',
+      page: window.location.href,
+      referrer: document.referrer || 'Direct',
+      userAgent: navigator.userAgent,
+      language: navigator.language || '',
+      platform: navigator.platform || '',
+      screen: `${window.screen.width}x${window.screen.height}`,
+      visitId: crypto.randomUUID ? crypto.randomUUID() : String(Date.now())
+    };
+
+    await fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'text/plain;charset=utf-8'
+      },
+      body: JSON.stringify(payload)
+    });
+
+    sessionStorage.setItem(sessionKey, 'true');
+    console.log('Visitor logged successfully');
+  } catch (err) {
+    console.log('Visitor log failed:', err);
+  }
+})();
+</script>
+  
 </body>
 </html>
