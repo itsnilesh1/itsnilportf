@@ -1682,13 +1682,21 @@ document.addEventListener('keydown', e => {
   <div class="pm-content" id="pm-content"></div>
 </div>
 
-  <script>
+<script>
 (async function logVisitor() {
   try {
-    const sessionKey = 'visitor_logged_once';
-    if (sessionStorage.getItem(sessionKey)) return;
-
     const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyTZ5izSAOckMmmLTKEmWpfvB9HYQYEC9L4Pj1oKHuqKHy5wVW5Q_oktLcItubRwNLf/exec';
+
+    // Permanent visitor ID for same browser
+    let visitorId = localStorage.getItem('portfolio_visitor_id');
+    if (!visitorId) {
+      visitorId = 'VID-' + Date.now() + '-' + Math.random().toString(36).slice(2, 10);
+      localStorage.setItem('portfolio_visitor_id', visitorId);
+    }
+
+    const now = new Date();
+    const visitDate = now.toISOString().split('T')[0];
+    const visitTime = now.toLocaleString();
 
     const ipRes = await fetch('https://api.ipify.org?format=json');
     const ipData = await ipRes.json();
@@ -1698,6 +1706,9 @@ document.addEventListener('keydown', e => {
     const geoData = await geoRes.json();
 
     const payload = {
+      visitorId: visitorId,
+      visitDate: visitDate,
+      visitTime: visitTime,
       ip: ip,
       city: geoData.city || '',
       region: geoData.region || '',
@@ -1709,8 +1720,7 @@ document.addEventListener('keydown', e => {
       userAgent: navigator.userAgent,
       language: navigator.language || '',
       platform: navigator.platform || '',
-      screen: `${window.screen.width}x${window.screen.height}`,
-      visitId: crypto.randomUUID ? crypto.randomUUID() : String(Date.now())
+      screen: `${window.screen.width}x${window.screen.height}`
     };
 
     await fetch(APPS_SCRIPT_URL, {
@@ -1721,7 +1731,6 @@ document.addEventListener('keydown', e => {
       body: JSON.stringify(payload)
     });
 
-    sessionStorage.setItem(sessionKey, 'true');
     console.log('Visitor logged successfully');
   } catch (err) {
     console.log('Visitor log failed:', err);
