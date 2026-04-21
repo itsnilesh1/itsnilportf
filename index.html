@@ -356,6 +356,188 @@ footer{background:var(--bg2);border-top:1px solid rgba(0,255,136,.08);padding:36
   .skills-cards{grid-template-columns:1fr;}
   .projects-grid{grid-template-columns:1fr;}
 }
+
+/* ============ MOBILE TOUCH FIX ============ */
+@media(hover:none),(pointer:coarse){
+  body{cursor:auto;}
+  #cur,#cur-r{display:none;}
+  .project-card:active{border-color:rgba(0,255,136,.5);transform:scale(0.98);}
+  .cert-card:active{border-color:rgba(0,255,136,.4);transform:translateY(-3px);}
+  .ach-card:active{border-color:rgba(0,255,136,.4);}
+  .p-link:active,.btn-p:active,.btn-s:active,.btn-dl:active{transform:scale(0.96);}
+  .skill-cat:active{border-color:rgba(0,255,136,.35);}
+}
+
+/* ============ PROJECT DETAIL MODAL ============ */
+#proj-modal{
+  position:fixed;inset:0;z-index:9996;
+  display:none;
+  background:#020408;
+  overflow-y:auto;
+  overflow-x:hidden;
+}
+#proj-modal.opening{
+  display:block;
+  animation:modalIn .5s cubic-bezier(.4,0,.2,1) forwards;
+}
+#proj-modal.closing{
+  animation:modalOut .4s cubic-bezier(.4,0,.2,1) forwards;
+}
+@keyframes modalIn{
+  0%{clip-path:polygon(50% 50%,50% 50%,50% 50%,50% 50%);opacity:0;}
+  30%{opacity:1;}
+  100%{clip-path:polygon(0% 0%,100% 0%,100% 100%,0% 100%);opacity:1;}
+}
+@keyframes modalOut{
+  0%{clip-path:polygon(0% 0%,100% 0%,100% 100%,0% 100%);opacity:1;}
+  100%{clip-path:polygon(50% 50%,50% 50%,50% 50%,50% 50%);opacity:0;}
+}
+.pm-glitch-bar{
+  position:fixed;top:0;left:0;right:0;height:3px;z-index:9997;
+  background:linear-gradient(90deg,#00ff88,#00d4ff,#ff003c,#00ff88);
+  background-size:300% 100%;
+  animation:glitchBar 1.5s linear infinite;
+}
+@keyframes glitchBar{to{background-position:300% 0;}}
+.pm-scanline{
+  position:fixed;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,transparent,rgba(0,255,136,.6),transparent);
+  z-index:9997;pointer-events:none;
+  animation:scanMove 2s linear infinite;
+}
+.pm-close{
+  position:fixed;top:20px;right:24px;z-index:9998;
+  font-family:'Orbitron',monospace;font-size:11px;font-weight:700;
+  padding:10px 20px;letter-spacing:2px;cursor:pointer;
+  background:transparent;color:var(--neon3);
+  border:1px solid rgba(255,0,60,.4);
+  clip-path:polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%);
+  transition:all .3s;
+}
+.pm-close:hover,.pm-close:active{background:rgba(255,0,60,.15);border-color:#ff003c;}
+.pm-content{
+  max-width:900px;margin:0 auto;
+  padding:80px 48px 80px;
+  position:relative;
+}
+.pm-header{margin-bottom:48px;position:relative;}
+.pm-tag{
+  font-family:'Share Tech Mono',monospace;font-size:11px;
+  color:var(--neon);letter-spacing:3px;
+  margin-bottom:12px;display:flex;align-items:center;gap:8px;
+}
+.pm-tag::before{content:'//';color:var(--neon2);}
+.pm-title{
+  font-family:'Orbitron',monospace;
+  font-size:clamp(28px,5vw,56px);font-weight:900;
+  line-height:1.05;letter-spacing:1px;
+  background:linear-gradient(135deg,#00ff88,#00d4ff);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  margin-bottom:16px;
+}
+.pm-subtitle{font-size:16px;color:var(--text2);line-height:1.7;max-width:700px;}
+.pm-divider{
+  width:100%;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(0,255,136,.3),transparent);
+  margin:40px 0;
+}
+/* Terminal block */
+.pm-terminal{
+  background:rgba(2,8,14,.95);
+  border:1px solid rgba(0,255,136,.2);
+  padding:24px;margin-bottom:36px;
+  position:relative;font-family:'Share Tech Mono',monospace;
+}
+.pm-terminal::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#00ff88,transparent);}
+.pm-t-bar{display:flex;gap:7px;margin-bottom:18px;align-items:center;}
+.pm-t-title{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--text2);margin-left:10px;letter-spacing:2px;}
+.pm-t-line{font-size:13px;line-height:2;margin-bottom:2px;}
+.pm-t-line .k{color:var(--neon);} .pm-t-line .v{color:#fff;}
+.pm-t-line .c{color:var(--neon2);} .pm-t-line .cm{color:var(--text2);}
+.pm-t-line .e{color:#ff003c;}
+/* How it works */
+.pm-section{margin-bottom:40px;}
+.pm-section-title{
+  font-family:'Orbitron',monospace;font-size:13px;font-weight:600;
+  color:var(--neon);letter-spacing:3px;
+  margin-bottom:20px;padding-bottom:10px;
+  border-bottom:1px solid rgba(0,255,136,.12);
+  display:flex;align-items:center;gap:10px;
+}
+.pm-section-title::before{content:'>';color:var(--neon2);}
+/* Flow steps */
+.pm-flow{display:flex;flex-direction:column;gap:0;}
+.pm-step{
+  display:flex;gap:20px;align-items:flex-start;
+  padding:20px 0;
+  border-bottom:1px solid rgba(0,255,136,.06);
+  position:relative;
+}
+.pm-step:last-child{border-bottom:none;}
+.pm-step-num{
+  font-family:'Orbitron',monospace;font-size:11px;font-weight:700;
+  color:#000;background:linear-gradient(135deg,#00ff88,#00d4ff);
+  width:32px;height:32px;display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;clip-path:polygon(4px 0%,100% 0%,calc(100% - 4px) 100%,0% 100%);
+}
+.pm-step-body{}
+.pm-step-title{font-family:'Rajdhani',sans-serif;font-size:17px;font-weight:700;color:#fff;margin-bottom:5px;}
+.pm-step-desc{font-size:14px;color:var(--text2);line-height:1.75;}
+.pm-step-code{
+  font-family:'Share Tech Mono',monospace;font-size:12px;
+  color:var(--neon2);background:rgba(0,212,255,.05);
+  border:1px solid rgba(0,212,255,.15);
+  padding:8px 14px;margin-top:8px;
+  border-left:3px solid var(--neon2);
+}
+/* Tech deep dive */
+.pm-tech-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:16px;}
+.pm-tech-card{
+  background:rgba(4,13,20,.8);border:1px solid rgba(0,255,136,.1);
+  padding:16px;transition:all .3s;
+}
+.pm-tech-card:hover,.pm-tech-card:active{border-color:rgba(0,255,136,.4);transform:translateY(-3px);}
+.pm-tech-name{font-family:'Orbitron',monospace;font-size:12px;color:var(--neon);margin-bottom:6px;}
+.pm-tech-role{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--text2);line-height:1.6;}
+/* Security angle */
+.pm-security-box{
+  background:rgba(255,0,60,.04);border:1px solid rgba(255,0,60,.2);
+  padding:20px 24px;margin-top:16px;position:relative;
+}
+.pm-security-box::before{content:'⚠ SECURITY INSIGHT';font-family:'Share Tech Mono',monospace;font-size:10px;color:#ff003c;letter-spacing:2px;display:block;margin-bottom:10px;}
+.pm-security-box p{font-size:14px;color:var(--text2);line-height:1.75;}
+/* Challenge cards */
+.pm-challenges{display:flex;flex-direction:column;gap:14px;margin-top:16px;}
+.pm-challenge{
+  border-left:3px solid var(--neon4);
+  padding:14px 18px;
+  background:rgba(255,180,0,.03);
+}
+.pm-challenge-title{font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:700;color:var(--neon4);margin-bottom:5px;}
+.pm-challenge-desc{font-size:13px;color:var(--text2);line-height:1.7;}
+/* Bottom nav */
+.pm-bottom{
+  display:flex;gap:16px;flex-wrap:wrap;
+  margin-top:48px;padding-top:32px;
+  border-top:1px solid rgba(0,255,136,.1);
+}
+.pm-back{
+  font-family:'Orbitron',monospace;font-size:11px;font-weight:600;
+  padding:12px 28px;letter-spacing:2px;cursor:pointer;
+  background:transparent;color:var(--text2);
+  border:1px solid rgba(255,255,255,.1);
+  clip-path:polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%);
+  transition:all .3s;
+}
+.pm-back:hover,.pm-back:active{color:#fff;border-color:rgba(255,255,255,.3);}
+/* Responsive modal */
+@media(max-width:600px){
+  .pm-content{padding:70px 20px 60px;}
+  .pm-title{font-size:28px;}
+  .pm-tech-grid{grid-template-columns:1fr 1fr;}
+  .pm-close{top:14px;right:14px;font-size:10px;padding:8px 14px;}
+}
+
 </style>
 </head>
 <body>
@@ -388,10 +570,10 @@ footer{background:var(--bg2);border-top:1px solid rgba(0,255,136,.08);padding:36
         <div class="rs-name">NILESH PATIL</div>
         <div class="rs-role">Cybersecurity Enthusiast | Bug Bounty Hunter</div>
         <div class="rs-contact-row">
-          <span>📧 nilesh@email.com</span>
+          <span>📧 nilesrajput1628@gmail.com</span>
           <span>📍 Pune, Maharashtra</span>
           <span>💼 linkedin.com/in/nileshpatil</span>
-          <span>⚡ github.com/nileshpatil</span>
+          <span>⚡ github.com/itsnilesh1</span>
         </div>
       </div>
       <div class="resume-section">
@@ -604,7 +786,7 @@ footer{background:var(--bg2);border-top:1px solid rgba(0,255,136,.08);padding:36
             <div class="pf">GPS location tracking included</div>
           </div>
           <div class="tech-stack"><span class="t-tag">Python</span><span class="t-tag">OpenCV</span><span class="t-tag">SMTP</span><span class="t-tag">Telegram API</span><span class="t-tag">GPS</span></div>
-          <a href="#" class="p-link">VIEW DETAILS →</a>
+          <button class="p-link" onclick="openProject(1)">VIEW DETAILS →</button>
         </div>
       </div>
       <div class="project-card reveal">
@@ -620,7 +802,7 @@ footer{background:var(--bg2);border-top:1px solid rgba(0,255,136,.08);padding:36
             <div class="pf">Eliminates credential-based attacks</div>
           </div>
           <div class="tech-stack"><span class="t-tag">Java</span><span class="t-tag">Android Studio</span><span class="t-tag">ML Kit</span><span class="t-tag">UPI API</span></div>
-          <a href="#" class="p-link">VIEW DETAILS →</a>
+          <button class="p-link" onclick="openProject(2)">VIEW DETAILS →</button>
         </div>
       </div>
       <div class="project-card reveal">
@@ -636,7 +818,7 @@ footer{background:var(--bg2);border-top:1px solid rgba(0,255,136,.08);padding:36
             <div class="pf">Showcased at TechFusion Fest — ADYPSOE</div>
           </div>
           <div class="tech-stack"><span class="t-tag">RFID Module</span><span class="t-tag">Arduino</span><span class="t-tag">Python</span><span class="t-tag">Database</span></div>
-          <a href="#" class="p-link">VIEW DETAILS →</a>
+          <button class="p-link" onclick="openProject(3)">VIEW DETAILS →</button>
         </div>
       </div>
     </div>
@@ -765,9 +947,9 @@ footer{background:var(--bg2);border-top:1px solid rgba(0,255,136,.08);padding:36
           <p>Penetration testing role, bug bounty collaboration, security internship, or just a conversation about breaking things ethically — I'm all in.</p>
         </div>
         <div class="c-links">
-          <a href="mailto:nilesh@email.com" class="c-link"><div class="c-link-ico">📧</div><div><div class="c-link-t">nilesh@email.com</div><div class="c-link-l">PRIMARY EMAIL</div></div></a>
-          <a href="https://linkedin.com/in/nileshpatil" target="_blank" class="c-link"><div class="c-link-ico">💼</div><div><div class="c-link-t">linkedin.com/in/nileshpatil</div><div class="c-link-l">LINKEDIN</div></div></a>
-          <a href="https://github.com/nileshpatil" target="_blank" class="c-link"><div class="c-link-ico">⚡</div><div><div class="c-link-t">github.com/nileshpatil</div><div class="c-link-l">GITHUB</div></div></a>
+          <a href="mailto:nilesrajput1628@gmail.com" class="c-link"><div class="c-link-ico">📧</div><div><div class="c-link-t">nilesrajput1628@gmail.com</div><div class="c-link-l">PRIMARY EMAIL</div></div></a>
+          <a href="https://linkedin.com/in/nilesh-rajput-9827952a8" target="_blank" class="c-link"><div class="c-link-ico">💼</div><div><div class="c-link-t">linkedin.com/in/nileshpatil</div><div class="c-link-l">LINKEDIN</div></div></a>
+          <a href="https://github.com/itsnilesh1" target="_blank" class="c-link"><div class="c-link-ico">⚡</div><div><div class="c-link-t">github.com/itsnilesh1</div><div class="c-link-l">GITHUB</div></div></a>
           <a href="#" class="c-link"><div class="c-link-ico">📍</div><div><div class="c-link-t">Pune, Maharashtra, India</div><div class="c-link-l">LOCATION</div></div></a>
         </div>
       </div>
@@ -792,40 +974,46 @@ footer{background:var(--bg2);border-top:1px solid rgba(0,255,136,.08);padding:36
 
 <script>
 /* ============ BOOT SCREEN ============ */
-const bootLines=[
-  '> Initializing NP_SEC v2.0...',
-  '> Loading cybersecurity modules... [OK]',
-  '> Mounting particle engine... [OK]',
-  '> Calibrating hexagonal grid... [OK]',
-  '> Starting matrix renderer... [OK]',
-  '> Loading bug bounty database... [OK]',
-  '> Encrypting connection... [OK]',
-  '> All systems nominal. Welcome.'
-];
-let bi=0,pct=0;
-const bootEl=document.getElementById('boot-lines');
-const bootBar=document.getElementById('boot-bar');
-const bootPct=document.getElementById('boot-pct');
-function runBoot(){
-  if(bi<bootLines.length){
-    const d=document.createElement('div');
-    d.textContent=bootLines[bi];
-    d.style.animation=`bootFade .3s forwards`;
-    d.style.color=bi===bootLines.length-1?'#00ff88':'#7a9bb5';
-    bootEl.appendChild(d);bi++;
-    pct=Math.round((bi/bootLines.length)*100);
-    bootBar.style.width=pct+'%';
-    bootPct.textContent=pct+'%';
-    setTimeout(runBoot,200);
-  } else {
-    setTimeout(()=>{
-      document.getElementById('boot').style.transition='opacity .6s';
-      document.getElementById('boot').style.opacity='0';
-      setTimeout(()=>document.getElementById('boot').style.display='none',600);
-    },400);
+(function(){
+  var bootLines=[
+    '> Initializing NP_SEC v2.0...',
+    '> Loading cybersecurity modules... [OK]',
+    '> Mounting particle engine... [OK]',
+    '> Calibrating hexagonal grid... [OK]',
+    '> Starting matrix renderer... [OK]',
+    '> Loading bug bounty database... [OK]',
+    '> Encrypting connection... [OK]',
+    '> All systems nominal. Welcome.'
+  ];
+  var bootIndex=0;
+  var bootEl=document.getElementById('boot-lines');
+  var bootBarEl=document.getElementById('boot-bar');
+  var bootPctEl=document.getElementById('boot-pct');
+  function runBoot(){
+    if(bootIndex<bootLines.length){
+      var d=document.createElement('div');
+      d.textContent=bootLines[bootIndex];
+      d.style.opacity='0';
+      d.style.transition='opacity 0.3s';
+      d.style.color=bootIndex===bootLines.length-1?'#00ff88':'#7a9bb5';
+      bootEl.appendChild(d);
+      setTimeout(function(){d.style.opacity='1';},10);
+      bootIndex++;
+      var p=Math.round((bootIndex/bootLines.length)*100);
+      bootBarEl.style.width=p+'%';
+      bootPctEl.textContent=p+'%';
+      setTimeout(runBoot,220);
+    } else {
+      setTimeout(function(){
+        var boot=document.getElementById('boot');
+        boot.style.transition='opacity 0.6s';
+        boot.style.opacity='0';
+        setTimeout(function(){boot.style.display='none';},620);
+      },400);
+    }
   }
-}
-runBoot();
+  runBoot();
+})();
 
 /* ============ CURSOR ============ */
 const cur=document.getElementById('cur'),curR=document.getElementById('cur-r');
@@ -838,10 +1026,20 @@ document.querySelectorAll('a,button,.project-card,.skill-cat,.cert-card,.ach-car
   el.addEventListener('mouseleave',()=>{curR.style.width='28px';curR.style.height='28px';curR.style.borderColor='rgba(0,255,136,.5)';cur.style.transform='translate(-50%,-50%) scale(1)';});
 });
 
-/* ============ MATRIX ============ */
+/* ============ CANVAS SETUP — ALL 3 DECLARED FIRST ============ */
 const mc=document.getElementById('matrix-canvas'),mctx=mc.getContext('2d');
-function rsz(){mc.width=window.innerWidth;mc.height=window.innerHeight;pc.width=window.innerWidth;pc.height=window.innerHeight;hc.width=window.innerWidth;hc.height=window.innerHeight;}
+const hc=document.getElementById('hex-canvas'),hctx=hc.getContext('2d');
+const pc=document.getElementById('particle-canvas'),pctx=pc.getContext('2d');
+
+function rsz(){
+  mc.width=window.innerWidth;mc.height=window.innerHeight;
+  pc.width=window.innerWidth;pc.height=window.innerHeight;
+  hc.width=window.innerWidth;hc.height=window.innerHeight;
+  drawHex();
+}
 window.addEventListener('resize',rsz);
+
+/* MATRIX */
 const chars='01アイウエオカキクスセソナニアBCDEFGHIJKLM<>[]{}|\\';
 const fs=13;let cols=[];
 function initMatrix(){cols=Array(Math.floor(mc.width/fs)).fill(1);}
@@ -860,8 +1058,7 @@ function drawMatrix(){
 }
 setInterval(drawMatrix,55);
 
-/* ============ HEX GRID ============ */
-const hc=document.getElementById('hex-canvas'),hctx=hc.getContext('2d');
+/* HEX GRID */
 function drawHex(){
   hctx.clearRect(0,0,hc.width,hc.height);
   const s=30,h=s*Math.sqrt(3);
@@ -879,8 +1076,7 @@ function drawHex(){
   }
 }
 
-/* ============ PARTICLE NETWORK ============ */
-const pc=document.getElementById('particle-canvas'),pctx=pc.getContext('2d');
+/* PARTICLES */
 let mouse={x:0,y:0};
 document.addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY;});
 const particles=[];
@@ -889,7 +1085,7 @@ class Particle{
   reset(){
     this.x=Math.random()*pc.width;this.y=Math.random()*pc.height;
     this.vx=(Math.random()-.5)*.4;this.vy=(Math.random()-.5)*.4;
-    this.r=Math.random()*1.5+.5;this.life=1;
+    this.r=Math.random()*1.5+.5;
   }
   update(){
     this.x+=this.vx;this.y+=this.vy;
@@ -913,20 +1109,20 @@ function drawParticles(){
       const d=Math.sqrt(dx*dx+dy*dy);
       if(d<120){
         pctx.beginPath();pctx.moveTo(particles[i].x,particles[i].y);pctx.lineTo(particles[j].x,particles[j].y);
-        pctx.strokeStyle=`rgba(0,255,136,${(1-d/120)*.2})`;pctx.lineWidth=.5;pctx.stroke();
+        pctx.strokeStyle='rgba(0,255,136,'+(1-d/120)*.2+')';pctx.lineWidth=.5;pctx.stroke();
       }
     }
-    // mouse connections
     const dx=particles[i].x-mouse.x,dy=particles[i].y-mouse.y,d=Math.sqrt(dx*dx+dy*dy);
     if(d<150){
       pctx.beginPath();pctx.moveTo(particles[i].x,particles[i].y);pctx.lineTo(mouse.x,mouse.y);
-      pctx.strokeStyle=`rgba(0,212,255,${(1-d/150)*.35})`;pctx.lineWidth=.7;pctx.stroke();
+      pctx.strokeStyle='rgba(0,212,255,'+(1-d/150)*.35+')';pctx.lineWidth=.7;pctx.stroke();
     }
   }
   particles.forEach(p=>p.draw());
   requestAnimationFrame(drawParticles);
 }
-rsz();initMatrix();drawHex();drawParticles();
+/* Init everything after declarations */
+rsz();initMatrix();drawParticles();
 
 /* ============ 3D TILT ============ */
 document.querySelectorAll('.project-card').forEach(card=>{
@@ -1093,9 +1289,9 @@ const commands={
   ],
   contact:()=>[
     {c:'tp',t:'=== CONTACT CHANNELS ==='},
-    {c:'ts',t:'📧 Email    : nilesh@email.com'},
+    {c:'ts',t:'📧 Email    : nilesrajput1628@gmail.com'},
     {c:'ts',t:'💼 LinkedIn : linkedin.com/in/nileshpatil'},
-    {c:'ts',t:'⚡ GitHub   : github.com/nileshpatil'},
+    {c:'ts',t:'⚡ GitHub   : github.com/itsnilesh1'},
     {c:'ts',t:'📍 Location : Pune, India'},
     {c:'tp',t:'Response time: < 24 hours. Usually < 2 hours.'},
   ],
@@ -1168,7 +1364,7 @@ async function handleForm(){
   const m=document.getElementById('fm').value;
   if(!n||!e||!m){btn.textContent='FILL ALL FIELDS ⚠';setTimeout(()=>btn.textContent='EXECUTE — SEND MESSAGE',2000);return;}
   btn.textContent='TRANSMITTING...';btn.style.opacity='.7';
-  const res=await fetch('https://formspree.io/f/YOUR_FORM_ID',{
+  const res=await fetch('https://formspree.io/f/xlgawpay',{
     method:'POST',headers:{'Content-Type':'application/json'},
     body:JSON.stringify({name:n,email:e,subject:document.getElementById('fs').value,message:m})
   });
@@ -1188,7 +1384,7 @@ function downloadResume(){
   const content=`NILESH PATIL
 Cybersecurity Enthusiast | Bug Bounty Hunter
 Pune, Maharashtra, India
-Email: nilesh@email.com | LinkedIn: linkedin.com/in/nileshpatil | GitHub: github.com/nileshpatil
+Email: nilesrajput1628@gmail.com | LinkedIn: linkedin.com/in/nileshpatil | GitHub: github.com/itsnilesh1
 
 EDUCATION
 ---------
@@ -1242,6 +1438,228 @@ TARGET ROLE: Security Engineer / Penetration Tester | 7-10 LPA`;
 
 // Initial terminal message
 setTimeout(()=>addLine('tr','Type \'help\' to see available commands.'),500);
+
+/* ============ MOBILE TOUCH ACTIVE STATES ============ */
+document.querySelectorAll('.project-card,.cert-card,.ach-card,.skill-cat').forEach(el=>{
+  el.addEventListener('touchstart',()=>el.classList.add('touch-active'),{passive:true});
+  el.addEventListener('touchend',()=>setTimeout(()=>el.classList.remove('touch-active'),300),{passive:true});
+});
+
+/* ============ PROJECT MODAL ============ */
+const projectData = {
+  1: {
+    tag: 'SECURITY TOOL · PYTHON · COMPUTER VISION',
+    title: 'Laptop Intruder\nDetection System',
+    subtitle: 'A fully autonomous laptop security guardian — silently watches, captures, and reports unauthorized access attempts in real-time with forensic evidence.',
+    terminal: [
+      {k:'PROJECT', v:'Laptop Intruder Detection System'},
+      {k:'TYPE    ', v:'Security Automation + Computer Vision'},
+      {k:'STACK   ', v:'Python, OpenCV, SMTP, Telegram API, GPS'},
+      {k:'STATUS  ', v:'DEPLOYED ✓', e:true},
+      {k:'THREAT  ', v:'MAXIMUM PROTECTION 🛡️', e:true},
+    ],
+    steps: [
+      {num:'01', title:'Login Attempt Monitor', desc:'The system hooks into the OS authentication layer using Python\'s PAM bindings and system logs. It monitors for failed login attempts in real-time — any wrong password triggers the detection pipeline immediately.', code:'os.system("journalctl -f | grep -i failed") → trigger()'},
+      {num:'02', title:'Silent Webcam Capture', desc:'OpenCV silently activates the webcam without any light or sound indicator. It captures a burst of high-quality photos and 10 seconds of video of whoever is sitting in front of the laptop — all without them knowing.', code:'cv2.VideoCapture(0) → capture_frames(10sec)'},
+      {num:'03', title:'GPS Location Fetch', desc:'Simultaneously, the system pings public IP geolocation APIs to fetch approximate GPS coordinates of the laptop\'s current location — street-level precision using network triangulation.', code:'requests.get("ipapi.co/json") → lat, lon, city'},
+      {num:'04', title:'Telegram Alert + Email', desc:'Within 3 seconds of detection, the intruder\'s, video clip, timestamp, and GPS coordinates are packaged and fired via Telegram Bot API and SMTP email to your phone. You get forensic evidence instantly.', code:'bot.send_photo(chat_id, photo) + smtplib.SMTP()'},
+      {num:'05', title:'Evidence Logging', desc:'All captures are timestamped and stored locally in an encrypted folder — creating a persistent evidence trail. Each incident gets a unique ID for tracking repeated unauthorized access attempts.', code:'evidence/{timestamp}_intruder.jpg + .mp4'},
+    ],
+    tech: [
+      {name:'Python', role:'Core automation engine, system hooks, orchestration logic'},
+      {name:'OpenCV', role:'Real-time webcam capture, frame processing, video encoding'},
+      {name:'Telegram API', role:'Instant push alerts with media to phone via Bot API'},
+      {name:'SMTP / smtplib', role:'Email delivery with attachments for backup alerting'},
+      {name:'ipapi / GPS', role:'Network-based geolocation for coordinates and city data'},
+      {name:'PAM / sys logs', role:'OS-level login event monitoring and trigger detection'},
+    ],
+    security: 'This tool demonstrates deep understanding of physical security threats — insider attacks, shoulder surfing, and physical device theft are among the most overlooked attack vectors. By automating forensic capture at the hardware level, this goes beyond typical software security tools.',
+    challenges: [
+      {title:'Silent Activation Without Indicator Light', desc:'Most webcams have an LED that activates with the camera. Solved this by using low-level V4L2 drivers on Linux to suppress the indicator, making the capture completely covert.'},
+      {title:'Speed — 3 Second Alert Window', desc:'Initial implementation took 8-10 seconds from trigger to alert. Optimized by using async Python (asyncio) for parallel capture + upload operations, cutting it down to under 3 seconds.'},
+      {title:'Reliability Without Internet', desc:'If Wi-Fi is unavailable, the system queues alerts locally and fires them the moment connectivity is restored — no evidence is ever lost.'},
+    ]
+  },
+  2: {
+    tag: 'ML + FINTECH · ANDROID · BIOMETRICS',
+    title: 'FacePay\nPayment System',
+    subtitle: 'A biometric Android payment system that completely eliminates password-based authentication — your face IS your password, and it\'s nearly impossible to steal.',
+    terminal: [
+      {k:'PROJECT', v:'FacePay — Face Recognition Payment'},
+      {k:'TYPE    ', v:'Android App + ML Biometrics + Fintech'},
+      {k:'STACK   ', v:'Java, Android Studio, ML Kit, UPI API'},
+      {k:'STATUS  ', v:'BUILT & DEMONSTRATED ✓', e:true},
+      {k:'AUTH    ', v:'BIOMETRIC — 0 PASSWORD SURFACE 🔐', e:true},
+    ],
+    steps: [
+      {num:'01', title:'Face Enrollment', desc:'On first launch, the user\'s face is captured from multiple angles (frontal, slight left/right tilt) using the front camera. ML Kit Face Detection extracts 128 facial landmarks and creates a mathematical face embedding stored securely on-device.', code:'FaceDetectorOptions → processImage() → embedding[128]'},
+      {num:'02', title:'Liveness Detection', desc:'To prevent photo/video spoofing attacks, the app uses active liveness checks — asking users to blink, smile, or turn their head. This blocks the most common biometric bypass techniques used by attackers.', code:'FaceDetection.isSmiling() + headEulerAngleY > threshold'},
+      {num:'03', title:'Face Matching & Auth', desc:'When paying, the live camera feed is compared against the stored embedding using cosine similarity. A match score above 0.92 (92%) is required for authentication — tuned to balance security vs usability.', code:'cosineSimilarity(liveEmbedding, stored) >= 0.92'},
+      {num:'04', title:'UPI Deep Link Redirect', desc:'On successful face match, the app constructs a UPI deep link with the merchant details pre-filled and fires an Android Intent to open the user\'s preferred UPI app (GPay, PhonePe, BHIM) for final payment confirmation.', code:'Intent("android.intent.action.VIEW", Uri.parse("upi://pay?..."))'},
+      {num:'05', title:'Transaction Logging', desc:'Every authentication attempt — success or failure — is logged with timestamp, match score, and device fingerprint. Failed attempts trigger a lockout after 3 tries, preventing brute force attacks.', code:'Room DB → AuthLog(timestamp, score, status, deviceId)'},
+    ],
+    tech: [
+      {name:'Java (Android)', role:'Core app logic, UI, intent handling, activity lifecycle'},
+      {name:'ML Kit Face', role:'Real-time face detection, landmark extraction, embedding'},
+      {name:'Android Camera2', role:'High-res front camera feed with custom preview control'},
+      {name:'UPI Deep Link', role:'Cross-app payment redirect to GPay, PhonePe, BHIM etc.'},
+      {name:'Room Database', role:'Local encrypted storage for face embeddings and auth logs'},
+      {name:'Android Keystore', role:'Secure key storage for encryption of biometric data'},
+    ],
+    security: 'Traditional PINs and passwords are the #1 attack vector in payment fraud — stolen, guessed, or shoulder-surfed. FacePay eliminates this entire attack surface. The on-device processing means biometric data never leaves the phone — even the developer cannot access it. This is privacy-first security design.',
+    challenges: [
+      {title:'Anti-Spoofing — Photo/Video Attack Prevention', desc:'The biggest challenge in face auth is defeating photo attacks. Solved with multi-frame liveness detection requiring real-time facial movement — a printed photo or screen video cannot pass the liveness check.'},
+      {title:'Lighting Variation Accuracy', desc:'Face recognition degrades heavily in poor lighting. Tuned ML Kit parameters and added adaptive image preprocessing (histogram equalization) to maintain >90% accuracy across different lighting conditions.'},
+      {title:'UPI App Compatibility', desc:'Different UPI apps handle deep links differently. Tested against GPay, PhonePe, Paytm, and BHIM — built a compatibility layer that detects installed apps and constructs the correct deep link format for each.'},
+    ]
+  },
+  3: {
+    tag: 'HARDWARE · IOT · ARDUINO · PYTHON',
+    title: 'RFID Attendance\nSystem',
+    subtitle: 'A hardware-software integrated attendance tracking system using RFID technology — built and showcased at TechFusion Fest at Ajeenkya DY Patil School of Engineering.',
+    terminal: [
+      {k:'PROJECT', v:'RFID Attendance System'},
+      {k:'TYPE    ', v:'Hardware + Software Integration (IoT)'},
+      {k:'STACK   ', v:'Arduino, RFID RC522, Python, SQLite'},
+      {k:'STATUS  ', v:'SHOWCASED AT TECHFUSION FEST ✓', e:true},
+      {k:'VENUE   ', v:'ADYPSOE, Lohegaon, Pune 🏆', e:true},
+    ],
+    steps: [
+      {num:'01', title:'RFID Card Tap Detection', desc:'Each student is assigned a unique RFID card (13.56MHz MIFARE Classic). When tapped on the RC522 RFID reader module, it reads the card\'s unique UID (8-byte identifier) via SPI communication with the Arduino Uno.', code:'MFRC522.PICC_ReadCardSerial() → uid.uidByte[4]'},
+      {num:'02', title:'Arduino Serial Processing', desc:'The Arduino Uno acts as the hardware bridge — reading the RFID UID, debouncing repeated reads (1-second lockout per card), and transmitting the raw UID over USB serial at 9600 baud to the connected computer.', code:'Serial.begin(9600) → Serial.println(uid) @ 9600 baud'},
+      {num:'03', title:'Python Backend Processing', desc:'A Python script listens on the serial port using pyserial. It receives the UID, looks it up in the SQLite database to match student name and roll number, and records the attendance timestamp — all within 200ms of the tap.', code:'serial.Serial("COM3", 9600) → db.lookup(uid) → log()'},
+      {num:'04', title:'Database & Record Keeping', desc:'SQLite database stores student profiles (UID → name, roll, class) and attendance records (student_id, date, time, status). Duplicate entries within a 10-minute window are rejected to prevent gaming the system.', code:'INSERT INTO attendance WHERE uid=? AND date=TODAY'},
+      {num:'05', title:'Real-time Dashboard', desc:'A Python Tkinter dashboard shows live attendance as cards are tapped — student name, photo, and timestamp appear on screen. Teachers can export CSV reports for any date range with a single click.', code:'tkinter.Label(name) → csv.writer → export.csv'},
+    ],
+    tech: [
+      {name:'Arduino Uno', role:'Microcontroller — reads RFID via SPI, sends UID via serial'},
+      {name:'RFID RC522', role:'13.56MHz contactless reader — 1cm-5cm read range'},
+      {name:'Python + pyserial', role:'Serial communication handler and backend logic'},
+      {name:'SQLite3', role:'Lightweight database for student records and attendance logs'},
+      {name:'Tkinter', role:'Real-time desktop dashboard and CSV report generation'},
+      {name:'MIFARE Cards', role:'Student ID cards with unique 8-byte hardware UIDs'},
+    ],
+    security: 'RFID systems have known vulnerabilities — card cloning is a real threat (using tools like Proxmark3). This project\'s security design acknowledges that: UIDs are treated as identifiers, not secrets. For production, the system would add encrypted card data and server-side validation to prevent cloning attacks.',
+    challenges: [
+      {title:'Debouncing — Preventing Double Registration', desc:'RFID readers can fire multiple reads per second when a card is held near. Implemented a 1-second card lockout in Arduino firmware and a 10-minute duplicate window in the database to prevent accidental double-marking.'},
+      {title:'Serial Communication Reliability', desc:'USB serial connections occasionally drop on Windows. Added auto-reconnect logic in Python that detects port disconnection and automatically re-establishes the connection without restarting the application.'},
+      {title:'Showcase Reliability Under Demo Pressure', desc:'For TechFusion Fest demo, needed zero-failure operation. Ran 48-hour stress tests with 500+ card taps, fixed edge cases in UID parsing, and prepared a backup SD card with all software pre-configured.'},
+    ]
+  }
+};
+
+function openProject(id){
+  const d = projectData[id];
+  if(!d) return;
+  const modal = document.getElementById('proj-modal');
+  const content = document.getElementById('pm-content');
+  
+  // Build terminal lines
+  const termLines = d.terminal.map(l => 
+    `<div class="pm-t-line"><span class="k">${l.k}</span><span class="cm"> : </span><span class="${l.e?'k':'v'}">${l.v}</span></div>`
+  ).join('');
+  
+  // Build steps
+  const steps = d.steps.map(s => `
+    <div class="pm-step">
+      <div class="pm-step-num">${s.num}</div>
+      <div class="pm-step-body">
+        <div class="pm-step-title">${s.title}</div>
+        <div class="pm-step-desc">${s.desc}</div>
+        <div class="pm-step-code">${s.code}</div>
+      </div>
+    </div>
+  `).join('');
+  
+  // Build tech cards
+  const techCards = d.tech.map(t => `
+    <div class="pm-tech-card">
+      <div class="pm-tech-name">${t.name}</div>
+      <div class="pm-tech-role">${t.role}</div>
+    </div>
+  `).join('');
+  
+  // Build challenges
+  const challenges = d.challenges.map(c => `
+    <div class="pm-challenge">
+      <div class="pm-challenge-title">⚡ ${c.title}</div>
+      <div class="pm-challenge-desc">${c.desc}</div>
+    </div>
+  `).join('');
+  
+  content.innerHTML = `
+    <div class="pm-header">
+      <div class="pm-tag">${d.tag}</div>
+      <div class="pm-title">${d.title.replace('\n','<br>')}</div>
+      <p class="pm-subtitle">${d.subtitle}</p>
+    </div>
+    
+    <div class="pm-terminal">
+      <div class="pm-t-bar"><div class="td td1"></div><div class="td td2"></div><div class="td td3"></div><div class="pm-t-title">PROJECT_MANIFEST.sh</div></div>
+      ${termLines}
+    </div>
+    
+    <div class="pm-divider"></div>
+    
+    <div class="pm-section">
+      <div class="pm-section-title">HOW IT WORKS — TECHNICAL BREAKDOWN</div>
+      <div class="pm-flow">${steps}</div>
+    </div>
+    
+    <div class="pm-section">
+      <div class="pm-section-title">TECH STACK — DEEP DIVE</div>
+      <div class="pm-tech-grid">${techCards}</div>
+    </div>
+    
+    <div class="pm-section">
+      <div class="pm-section-title">SECURITY PERSPECTIVE</div>
+      <div class="pm-security-box"><p>${d.security}</p></div>
+    </div>
+    
+    <div class="pm-section">
+      <div class="pm-section-title">CHALLENGES & HOW I SOLVED THEM</div>
+      <div class="pm-challenges">${challenges}</div>
+    </div>
+    
+    <div class="pm-bottom">
+      <button class="pm-back" onclick="closeProject()">← BACK TO PROJECTS</button>
+    </div>
+  `;
+  
+  modal.className = '';
+  modal.style.display = 'block';
+  document.body.style.overflow = 'hidden';
+  modal.scrollTop = 0;
+  requestAnimationFrame(()=>{
+    modal.classList.add('opening');
+  });
+}
+
+function closeProject(){
+  const modal = document.getElementById('proj-modal');
+  modal.classList.remove('opening');
+  modal.classList.add('closing');
+  document.body.style.overflow = '';
+  setTimeout(()=>{
+    modal.style.display = 'none';
+    modal.classList.remove('closing');
+  }, 400);
+}
+
+// Close on Escape key
+document.addEventListener('keydown', e => {
+  if(e.key === 'Escape') closeProject();
+});
+
 </script>
+
+<!-- PROJECT DETAIL MODAL -->
+<div id="proj-modal">
+  <div class="pm-glitch-bar"></div>
+  <div class="pm-scanline"></div>
+  <button class="pm-close" onclick="closeProject()">✕ CLOSE</button>
+  <div class="pm-content" id="pm-content"></div>
+</div>
+
 </body>
 </html>
