@@ -1348,9 +1348,21 @@ function runCmd(cmd){
   if(res==='CLEAR'){tuOutput.innerHTML='';addLine('tp','Terminal cleared.');return;}
   res.forEach((r,i)=>setTimeout(()=>addLine(r.c||'tr',r.t),i*60));
 }
-tuInput.addEventListener('keydown',e=>{
-  if(e.key==='Enter'&&tuInput.value.trim()){
-    runCmd(tuInput.value.trim());tuInput.value='';
+tuInput.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const cmd = tuInput.value.trim();
+    if (!cmd) return;
+
+    runCmd(cmd);
+    tuInput.value = '';
+
+    tuInput.blur();
+    setTimeout(() => {
+      tuInput.focus();
+    }, 0);
   }
 });
 tuInput.addEventListener('focus',()=>{curR.style.borderColor='rgba(0,212,255,.8)';});
