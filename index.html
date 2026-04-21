@@ -1687,7 +1687,6 @@ document.addEventListener('keydown', e => {
   try {
     const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyTZ5izSAOckMmmLTKEmWpfvB9HYQYEC9L4Pj1oKHuqKHy5wVW5Q_oktLcItubRwNLf/exec';
 
-    // Permanent visitor ID for same browser
     let visitorId = localStorage.getItem('portfolio_visitor_id');
     if (!visitorId) {
       visitorId = 'VID-' + Date.now() + '-' + Math.random().toString(36).slice(2, 10);
