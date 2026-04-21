@@ -1688,7 +1688,7 @@ document.addEventListener('keydown', e => {
     const sessionKey = 'visitor_logged_once';
     if (sessionStorage.getItem(sessionKey)) return;
 
-    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxNL2NJZlCXC7qjTg3oy7aJ8wbH1GV-cEPUV-W4ro02utPzh4gzo3r-ieShPkfepLRT/exec';
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyTZ5izSAOckMmmLTKEmWpfvB9HYQYEC9L4Pj1oKHuqKHy5wVW5Q_oktLcItubRwNLf/exec';
 
     const ipRes = await fetch('https://api.ipify.org?format=json');
     const ipData = await ipRes.json();
