@@ -238,6 +238,14 @@ nav{padding-top:env(safe-area-inset-top)}
 @media(max-height:500px) and (orientation:landscape){.hero{min-height:auto;padding:28px 0}}
 @media(hover:none){.glass.on:hover,.card.on:hover,.btn:hover,.links a:hover,.ib:hover{transform:none}.btn:hover{box-shadow:none}}
 @media print{#toast,#top-btn,#pal,.skip,.navr{display:none!important}}
+
+/* ===== v7: name never wraps mid-word ===== */
+.hero-grid>*{min-width:0}
+.hero-grid>div:first-child{container-type:inline-size}
+h1 .ln{white-space:nowrap}
+h1{font-size:clamp(40px,8.4vw,120px)}
+@supports (width:1cqw){h1{font-size:min(138px,16cqw)}}
+@media(max-width:600px){h1{font-size:clamp(40px,12vw,84px)}@supports (width:1cqw){h1{font-size:min(138px,16cqw)}}}
 </style>
 </head>
 <body>
