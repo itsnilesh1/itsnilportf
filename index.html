@@ -11,611 +11,249 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306070D'/%3E%3Ctext x='32' y='43' font-size='28' font-family='sans-serif' font-weight='800' text-anchor='middle' fill='%238B5CF6'%3ENP%3C/text%3E%3C/svg%3E">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Nilesh Patil","jobTitle":"Computer Engineering Student","address":{"@type":"PostalAddress","addressLocality":"Pune","addressRegion":"Maharashtra","addressCountry":"IN"},"email":"mailto:patilnilesh1628@gmail.com","sameAs":["https://github.com/itsnilesh1","https://www.linkedin.com/in/nileshpatil1628"]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Manrope:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#06070D;--text:#E7E9F3;--mute:#8E93AB;--line:rgba(255,255,255,.09);--c:#22D3EE;--v:#8B5CF6;--p:#F472B6;--g:linear-gradient(110deg,var(--c),var(--v) 55%,var(--p));--head:'Syne',sans-serif;--body:'Manrope',sans-serif;--mono:'JetBrains Mono',monospace}
+:root{--a:#8B5CF6;--b:#22D3EE;--c:#F472B6;--ar:139,92,246;--bg:#06070D;--tx:#E7E9F3;--mu:#8E93AB;--ln:rgba(255,255,255,.1);--g:linear-gradient(110deg,var(--b),var(--a) 55%,var(--c));--hd:'Syne',sans-serif}
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:76px}
-body{background:var(--bg);color:var(--text);font:400 16px/1.7 var(--body);overflow-x:hidden;-webkit-font-smoothing:antialiased}
-::selection{background:rgba(var(--vr),.4)}
-::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--g);border-radius:3px}
-a{color:inherit}:focus-visible{outline:2px solid var(--c);outline-offset:3px}
-.wrap{max-width:1160px;margin:0 auto;padding:0 28px}
-#aur{position:fixed;inset:0;z-index:-2;overflow:hidden}
-#aur i{position:absolute;width:55vmax;height:55vmax;border-radius:50%;filter:blur(110px);opacity:.28;animation:drift 22s ease-in-out infinite alternate}
-#aur i:nth-child(1){background:var(--a1);top:-20vmax;left:-12vmax}
-#aur i:nth-child(2){background:var(--a2);bottom:-25vmax;right:-15vmax;animation-delay:-8s}
-#aur i:nth-child(3){background:var(--a3);top:35%;left:40%;width:35vmax;height:35vmax;opacity:.16;animation-delay:-14s}
-@keyframes drift{to{transform:translate(8vmax,6vmax) scale(1.15)}}
-#net{position:fixed;inset:0;z-index:-1;pointer-events:none}
-body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:56px 56px;-webkit-mask-image:radial-gradient(ellipse at 50% 30%,#000 20%,transparent 75%);mask-image:radial-gradient(ellipse at 50% 30%,#000 20%,transparent 75%)}
-#prog{position:fixed;top:0;left:0;height:2px;width:0;background:var(--g);z-index:60}
-#cg{position:fixed;left:0;top:0;width:520px;height:520px;margin:-260px 0 0 -260px;border-radius:50%;background:radial-gradient(circle,rgba(var(--vr),.13),transparent 65%);pointer-events:none;z-index:0;display:none}
-@media(hover:hover) and (pointer:fine){#cg{display:block}}
+html,body{height:100%;overflow:hidden}
+body{background:var(--bg);color:var(--tx);font:13px/1.65 'JetBrains Mono',monospace;-webkit-font-smoothing:antialiased}
+button,input,textarea{font:inherit;color:inherit}a{color:var(--b)}
+:focus-visible{outline:2px solid var(--b);outline-offset:2px}
+#rain{position:fixed;inset:0;opacity:.22}
+#wall{position:fixed;inset:0;background:radial-gradient(60vmax 50vmax at 15% 10%,rgba(var(--ar),.28),transparent 60%),radial-gradient(50vmax 45vmax at 90% 95%,rgba(34,211,238,.16),transparent 60%)}
+.hide{display:none!important}
 
-#boot{position:fixed;inset:0;z-index:100;background:var(--bg);display:grid;place-content:center;gap:18px;font:13px/2 var(--mono);color:var(--c);cursor:pointer;transition:opacity .6s}
-#boot.out{opacity:0;pointer-events:none}
-#bl{min-width:min(420px,86vw)}#bl div{animation:fin .3s both}
-.bbar{height:2px;background:rgba(255,255,255,.08);overflow:hidden}.bbar i{display:block;height:100%;width:0;background:var(--g);transition:width .25s}
-#boot small{color:var(--mute);font-size:11px}
-@keyframes fin{from{opacity:0;transform:translateX(-6px)}}
+/* boot + login */
+#boot{position:fixed;inset:0;z-index:500;background:var(--bg);display:grid;place-content:center;padding:20px;color:var(--b);line-height:2;cursor:pointer}
+#bl{min-width:min(460px,88vw)}#bl div{animation:in .25s both}
+@keyframes in{from{opacity:0;transform:translateX(-6px)}}
+#login{display:none;text-align:center;cursor:default;width:min(340px,88vw)}
+#login .av{width:84px;height:84px;margin:0 auto 14px;border-radius:50%;background:var(--g);display:grid;place-items:center;font:800 30px var(--hd);color:#06070D;box-shadow:0 0 50px rgba(var(--ar),.5)}
+#login h2{font:800 26px var(--hd);color:var(--tx)}#login p{color:var(--mu);margin:2px 0 16px}
+#pw{width:100%;padding:12px 14px;background:rgba(255,255,255,.05);border:1px solid var(--ln);border-radius:10px;outline:0;text-align:center;color:var(--tx)}
+#pw:focus{border-color:var(--b)}
+#lm{min-height:22px;margin-top:10px;color:var(--c);font-size:12px}
+.go{margin-top:10px;width:100%;padding:12px;border:0;border-radius:10px;background:var(--g);color:#06070D;font-weight:700;cursor:pointer}
 
-nav{position:sticky;top:0;z-index:50;background:rgba(6,7,13,.6);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
-nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:20px}
-.logo{font:800 18px var(--head);text-decoration:none;letter-spacing:.04em;background:var(--g);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-nav ul{display:flex;gap:24px;list-style:none;font-size:14px}
-nav ul a{text-decoration:none;color:var(--mute);transition:color .2s}nav ul a:hover{color:#fff}
-.btn{display:inline-flex;align-items:center;gap:8px;font:600 14px var(--body);padding:12px 24px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.04);color:var(--text);text-decoration:none;cursor:pointer;transition:transform .2s,border-color .2s,box-shadow .2s}
-.btn:hover{transform:translateY(-2px);border-color:var(--c);box-shadow:0 8px 30px rgba(var(--cr),.18)}
-.btn.fill{background:var(--g);border-color:transparent;color:#07080F}.btn.fill:hover{box-shadow:0 8px 34px rgba(var(--vr),.45)}
-.ham{display:none;background:none;border:0;width:40px;height:40px;cursor:pointer;flex-direction:column;gap:5px;align-items:center;justify-content:center}.ham span{width:22px;height:2px;background:var(--text)}
-
-.hero{position:relative;min-height:calc(100vh - 64px);display:flex;flex-direction:column;justify-content:center;padding:60px 0 0}
-.hero .wrap{width:100%}
-.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center}
-.avail{display:inline-flex;align-items:center;gap:10px;font:500 12px var(--mono);color:var(--c);border:1px solid rgba(var(--cr),.3);background:rgba(var(--cr),.06);padding:7px 16px;border-radius:999px;margin-bottom:28px}
-.avail i{width:7px;height:7px;border-radius:50%;background:var(--c);animation:pl 2s infinite}
-@keyframes pl{0%,100%{box-shadow:0 0 0 0 rgba(var(--cr),.6)}50%{box-shadow:0 0 0 8px transparent}}
-h1{font:800 clamp(52px,10vw,138px)/.95 var(--head);letter-spacing:-.02em;filter:drop-shadow(0 0 40px rgba(var(--vr),.35))}
-h1 .ln{display:block;perspective:600px}
-.lt{display:inline-block;opacity:0;transform:translateY(60%) rotateX(-70deg);background:var(--g);background-size:7em 100%;background-position:calc(var(--i)*-.62em) 0;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
-.go .lt{animation:rise .9s cubic-bezier(.2,.8,.2,1) calc(var(--i)*60ms) forwards}
-@keyframes rise{to{opacity:1;transform:none}}
-.sub{margin-top:26px;font:500 clamp(13px,1.5vw,15px) var(--body);color:var(--mute);letter-spacing:.04em}
-.tag{font:600 clamp(18px,2.2vw,25px)/1.4 var(--head);margin:14px 0 6px;max-width:30ch}
-.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
-
-.term{border:1px solid rgba(var(--vr),.3);background:rgba(5,6,12,.82);border-radius:16px;overflow:hidden;backdrop-filter:blur(14px);box-shadow:0 30px 80px rgba(0,0,0,.5),0 0 60px rgba(var(--vr),.1)}
-.bar{display:flex;align-items:center;gap:7px;padding:13px 16px;border-bottom:1px solid var(--line);font:11px var(--mono);color:var(--mute)}
-.bar i{width:10px;height:10px;border-radius:50%;background:#ff5f56}.bar i:nth-child(2){background:#ffbd2e}.bar i:nth-child(3){background:#27c93f}
-.bar span{margin-left:auto}
-.mini{padding-bottom:16px}.mini .bar{margin-bottom:12px}.tm{padding:0 20px;font:13px/1.9 var(--mono)}
-.tm b{color:var(--c);font-weight:500}.dim{color:var(--mute)}
-#ty{color:var(--c)}.caret{display:inline-block;width:8px;height:15px;background:var(--c);vertical-align:-2px;margin-left:2px;animation:bk 1s steps(1) infinite}
-@keyframes bk{50%{opacity:0}}
-.mq{margin-top:56px;overflow:hidden;border-block:1px solid var(--line);padding:16px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
-.mqi{display:flex;width:max-content;animation:mq 34s linear infinite;font:600 15px var(--head);color:var(--mute)}
-.mqi span{padding-right:44px;white-space:nowrap}.mqi span::before{content:"◆";color:var(--v);margin-right:44px;font-size:8px;vertical-align:2px}
-@keyframes mq{to{transform:translateX(-50%)}}
-
-.sec{position:relative;padding:100px 0;border-top:1px solid var(--line)}
-.sec .wrap{display:grid;grid-template-columns:220px 1fr;gap:48px}
-.sec h2{font:700 clamp(28px,3.6vw,42px)/1.1 var(--head);position:sticky;top:100px;align-self:start}
-.sec h2::before{content:"~/";display:block;font:500 13px var(--mono);color:var(--c);margin-bottom:8px}
-.rv{opacity:0;transform:translateY(26px);transition:opacity .8s,transform .8s}.rv.on{opacity:1;transform:none}
-.glass{position:relative;background:rgba(255,255,255,.035);border:1px solid var(--line);border-radius:18px;backdrop-filter:blur(10px);transition:border-color .3s,transform .3s,opacity .8s}
-.glass::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(var(--vr),.16),transparent 45%)}
-.glass:hover{border-color:rgba(var(--vr),.45)}.glass:hover::before{opacity:1}
-.glass.on:hover{transform:translateY(-4px)}
-
-.about p{font-size:18px;line-height:1.8;color:#C3C7D9;max-width:64ch;margin-bottom:20px}.about p b{color:#fff}
-.badge{display:inline-block;font:500 13px var(--mono);color:#07080F;background:var(--g);padding:6px 16px;border-radius:999px;margin-bottom:28px}
-.quote{font:600 clamp(20px,2.4vw,28px)/1.4 var(--head);padding:22px 0 22px 26px;margin:34px 0;max-width:34ch;border-left:3px solid;border-image:var(--g) 1}
-.stats{display:flex;gap:18px;flex-wrap:wrap;margin-top:12px}
-.stats>div{min-width:140px;padding:20px 24px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.03)}
-.stats b{display:block;font:800 40px/1 var(--head);background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent}.stats span{font-size:13px;color:var(--mute)}
-
-.skgrid{display:grid;grid-template-columns:1fr 1fr;gap:36px 48px}
-.skgrid h3{font:700 20px var(--head);margin-bottom:16px}
-.sk{margin-bottom:14px;font-size:14px}.sk div{display:flex;justify-content:space-between;margin-bottom:6px}.sk em{font:12px var(--mono);font-style:normal;color:var(--c)}
-.sk .t{height:4px;background:rgba(255,255,255,.07);border-radius:3px;overflow:hidden}.sk .t i{display:block;height:100%;width:0;background:var(--g);border-radius:3px;transition:width 1.4s cubic-bezier(.3,0,.1,1)}
-.tags{display:flex;flex-wrap:wrap;gap:8px}.tags span{font:12px var(--mono);padding:5px 13px;border:1px solid rgba(var(--cr),.25);color:var(--c);background:rgba(var(--cr),.05);border-radius:999px;transition:background .2s,transform .2s}.tags span:hover{background:rgba(var(--cr),.14);transform:translateY(-2px)}
-.radarbox{display:flex;justify-content:center;margin-top:48px}.radarbox canvas{max-width:100%;height:auto}
-
-.proj{padding:34px;margin-bottom:24px}
-.proj .kind{font:500 12px var(--mono);color:var(--p);margin-bottom:10px}
-.proj h3{font:700 clamp(24px,3vw,34px)/1.15 var(--head);margin-bottom:12px}
-.proj>p{color:#B7BBCF;max-width:62ch;margin-bottom:18px}
-.feat{display:grid;grid-template-columns:1fr 1fr;gap:6px 28px;list-style:none;margin-bottom:20px;font:12px/1.7 var(--mono);color:var(--mute)}
-.feat li::before{content:"▸ ";color:var(--v)}
-details{margin-top:22px;border-top:1px solid var(--line)}
-summary{cursor:pointer;padding:16px 0 4px;font:600 14px var(--mono);color:var(--c);list-style:none;display:flex;justify-content:space-between}summary::-webkit-details-marker{display:none}
-summary::after{content:"+";font-size:20px;transition:transform .25s}details[open] summary::after{transform:rotate(45deg)}
-.det{display:grid;gap:28px;padding:18px 0 4px;animation:fin .4s both}
-.det h4{font:700 17px var(--head);margin-bottom:10px}
-.det ol{padding-left:22px;display:grid;gap:10px;max-width:70ch;font-size:15px;color:#B7BBCF}.det ol b{color:#fff}.det ol li::marker{color:var(--v);font-family:var(--mono)}
-.det dl{display:grid;grid-template-columns:150px 1fr;gap:8px 20px;font-size:14px}.det dt{font:500 13px var(--mono);color:var(--c)}.det dd{color:var(--mute)}
-.note{border:1px solid rgba(var(--pr),.3);background:rgba(var(--pr),.05);border-radius:12px;padding:16px 20px;font-size:14px;color:#C9CCDD;max-width:70ch}.note b{color:var(--p)}
-.det ul.ch{list-style:none;display:grid;gap:14px;max-width:70ch;font-size:15px;color:#B7BBCF}.det ul.ch b{display:block;color:#FBBF24;margin-bottom:2px}
-
-.cards{display:grid;grid-template-columns:1fr 1fr;gap:18px}.card{padding:24px}
-.card small{display:block;font:500 12px var(--mono);color:var(--c);margin-bottom:8px}
-.card h3{font:700 19px/1.3 var(--head);margin-bottom:8px}.card p{font-size:14px;color:var(--mute)}.card .d{font:12px var(--mono);margin-top:12px;color:var(--v)}
-
-.tl{list-style:none;position:relative;padding-left:34px}
-.tl::before{content:"";position:absolute;left:5px;top:6px;bottom:0;width:2px;background:linear-gradient(var(--c),var(--v),var(--p),transparent)}
-.tl li{position:relative;padding-bottom:38px}
-.tl li::before{content:"";position:absolute;left:-34px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--c);box-shadow:0 0 14px rgba(var(--cr),.6)}
-.tl li.now::before{background:var(--c);animation:pl 2s infinite}
-.tl time{font:500 12px var(--mono);color:var(--c)}.tl h3{font:700 21px/1.3 var(--head);margin:3px 0 6px}.tl p{max-width:62ch;color:var(--mute);font-size:15px}
-
-.to{height:340px;overflow-y:auto;padding:18px 20px;font:13px/1.85 var(--mono)}
-.to .p{color:var(--c)}.to .c{color:#A78BFA}.to .s{color:#fff}.to .r{color:var(--mute)}.to .e{color:#FB7185}.to .g{color:#FBBF24}
-.tin{display:flex;gap:10px;align-items:center;padding:14px 20px;border-top:1px solid var(--line);font:13px var(--mono)}
-.tin span{color:var(--c);white-space:nowrap}.tin input{flex:1;background:none;border:0;outline:0;color:#fff;font:inherit;min-width:0}
-.hint{padding:10px 20px 14px;font:11px var(--mono);color:var(--mute);border-top:1px solid rgba(255,255,255,.05);display:flex;flex-wrap:wrap;gap:4px 14px}
-.hint button{background:none;border:0;color:var(--v);font:inherit;cursor:pointer}.hint button:hover{color:var(--c)}
-
-.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
-.cgrid h3{font:700 28px/1.2 var(--head);margin-bottom:12px}.cgrid p{color:var(--mute)}
-.links{display:grid;gap:12px;margin-top:26px}
-.links a,.links .loc{display:flex;align-items:center;gap:14px;padding:14px 18px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.03);text-decoration:none;font-size:14px;transition:transform .25s,border-color .25s}
-.links a:hover{transform:translateX(6px);border-color:var(--c)}
-.links b{font:500 13px var(--mono);display:block;word-break:break-all}.links small{color:var(--mute);font-size:12px}
-.links .ic{width:38px;height:38px;border:1px solid var(--line);border-radius:10px;display:grid;place-items:center;flex-shrink:0}
-.tf{overflow:hidden}
-.tf form{padding:20px 22px 24px;display:grid;gap:14px}
-.fg label{display:block;font:500 12px var(--mono);color:var(--c);margin-bottom:6px}.fg label::before{content:"$ "}
-.tf input,.tf textarea{width:100%;background:rgba(0,0,0,.35);border:1px solid var(--line);border-radius:10px;padding:11px 14px;color:var(--text);font:13px var(--mono);outline:0;transition:border-color .2s,box-shadow .2s}
-.tf input:focus,.tf textarea:focus{border-color:var(--c);box-shadow:0 0 0 3px rgba(var(--cr),.12)}
-.tf textarea{height:100px;resize:vertical}
-.exec{position:relative;overflow:hidden;width:100%;font:700 13px var(--head);letter-spacing:.08em;padding:15px;border:0;border-radius:12px;background:var(--g);color:#07080F;cursor:pointer;transition:transform .2s,box-shadow .2s}
-.exec::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.55) 50%,transparent 70%);transform:translateX(-120%);animation:sw 3.5s ease-in-out infinite}
-@keyframes sw{60%,100%{transform:translateX(120%)}}
-.exec:hover{transform:translateY(-2px);box-shadow:0 10px 36px rgba(var(--vr),.5)}.exec:disabled{opacity:.7}
-#fstat{font:12px var(--mono);color:var(--mute);min-height:18px}
-footer{border-top:1px solid var(--line);padding:38px 0;font:12px/1.8 var(--mono);color:var(--mute);text-align:center}
-.flogo{font:800 20px var(--head);background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
-
-@media(max-width:900px){
- .sec .wrap,.cgrid,.skgrid,.cards,.feat,.hero-grid{grid-template-columns:1fr}
- .sec h2{position:static}.sec{padding:68px 0}
- nav ul{display:none;position:absolute;top:64px;left:0;right:0;height:calc(100vh - 64px);background:rgba(6,7,13,.97);flex-direction:column;align-items:center;justify-content:center;gap:26px;font-size:20px}
- nav ul.open{display:flex}.ham{display:flex}.det dl{grid-template-columns:1fr}.btn.rs{display:none}.proj{padding:24px}
+/* desktop */
+#dk{position:fixed;left:14px;top:14px;bottom:62px;display:grid;grid-auto-flow:column;grid-template-rows:repeat(auto-fill,88px);grid-auto-columns:86px;gap:6px;align-content:start}
+.ic{background:none;border:1px solid transparent;border-radius:10px;display:grid;place-items:center;align-content:center;gap:2px;cursor:pointer;font-size:11px;color:var(--tx);text-shadow:0 1px 6px #000}
+.ic b{font-size:30px;line-height:1;filter:drop-shadow(0 0 10px rgba(var(--ar),.6))}
+.ic:hover,.ic:focus-visible{background:rgba(var(--ar),.18);border-color:rgba(var(--ar),.45)}
+#hero{position:fixed;right:5vw;top:11vh;text-align:right;pointer-events:none;max-width:46vw}
+#hero h1{font:800 clamp(34px,6.5vw,92px)/.95 var(--hd);background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 30px rgba(var(--ar),.4))}
+#hero p{color:var(--mu);margin-top:10px}#hero .t{color:var(--tx);font:700 clamp(14px,1.6vw,19px) var(--hd);margin-top:14px}
+.win{position:absolute;display:flex;flex-direction:column;min-width:300px;min-height:180px;max-width:100vw;background:rgba(8,10,20,.93);border:1px solid rgba(var(--ar),.35);border-radius:12px;backdrop-filter:blur(14px);box-shadow:0 30px 70px rgba(0,0,0,.55);resize:both;overflow:hidden;animation:pop .22s both}
+@keyframes pop{from{opacity:0;transform:scale(.94)}}
+.win.on{border-color:rgba(var(--ar),.8);box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 50px rgba(var(--ar),.18)}
+.win.mx{inset:0 0 48px 0!important;width:auto!important;height:auto!important;border-radius:0;resize:none}
+.tb{display:flex;align-items:center;gap:7px;padding:10px 12px;border-bottom:1px solid var(--ln);font-size:11px;color:var(--mu);cursor:grab;user-select:none;touch-action:none}
+.tb span{margin-left:6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.d{width:13px;height:13px;border-radius:50%;border:0;padding:0;cursor:pointer;flex:none}
+.bd{flex:1;overflow:auto;padding:18px 20px}
+.bd h3{font:800 20px var(--hd);margin:0 0 8px}.bd h4{font:700 15px var(--hd);margin:16px 0 6px}
+.bd p{margin-bottom:12px;color:#C3C7D9;max-width:68ch}.mu{color:var(--mu)}
+.lead{font:700 20px/1.3 var(--hd);color:var(--tx)!important}
+.bq{border-left:3px solid var(--a);padding:4px 0 4px 14px;margin:14px 0;font:700 16px/1.4 var(--hd);color:var(--tx)}
+.st{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}.st div{padding:10px 16px;border:1px solid var(--ln);border-radius:10px}.st b{display:block;font:800 26px/1 var(--hd);color:var(--b)}
+.tg{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}.tg span{padding:3px 11px;border:1px solid rgba(34,211,238,.3);color:var(--b);border-radius:99px;font-size:11px}
+.sk{margin-bottom:11px}.sk div{display:flex;justify-content:space-between}.sk em{font-style:normal;color:var(--b)}
+.sk i{display:block;height:4px;margin-top:5px;background:rgba(255,255,255,.08);border-radius:3px;overflow:hidden}.sk i u{display:block;height:100%;width:0;background:var(--g);transition:width 1.2s cubic-bezier(.3,0,.1,1)}
+.cd{padding:14px 16px;border:1px solid var(--ln);border-radius:10px;margin-bottom:10px;background:rgba(255,255,255,.03)}
+.cd small{color:var(--b)}.cd b{display:block;font:700 15px/1.3 var(--hd);margin:3px 0}.cd .y{color:var(--a);font-size:11px;margin-top:4px}
+.pj{padding:16px;border:1px solid var(--ln);border-radius:12px;margin-bottom:16px;background:rgba(255,255,255,.03)}
+.pj .k{color:var(--c);font-size:11px}.pj ul{list-style:none;color:var(--mu);margin:8px 0}.pj li::before{content:"▸ ";color:var(--a)}
+details{border-top:1px solid var(--ln);margin-top:10px}summary{cursor:pointer;padding:10px 0 2px;color:var(--b);font-weight:700}
+ol.s{padding-left:20px;display:grid;gap:7px;color:#B7BBCF;margin:8px 0}ol.s b{color:#fff}
+.nt{border:1px solid rgba(var(--ar),.4);background:rgba(var(--ar),.07);border-radius:10px;padding:10px 14px;margin:10px 0;color:#C9CCDD}.nt b{color:var(--c)}
+.ch{list-style:none;display:grid;gap:8px;color:#B7BBCF}.ch b{display:block;color:#FBBF24}
+.tl{list-style:none;border-left:2px solid var(--a);margin-left:6px;padding-left:18px}.tl li{margin-bottom:16px;position:relative}
+.tl li::before{content:"";position:absolute;left:-25px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--bg);border:2px solid var(--b)}
+.tl li.now::before{background:var(--b)}.tl time{color:var(--b);font-size:11px}.tl b{display:block;font:700 15px var(--hd)}.tl span{color:var(--mu)}
+.to{font-size:12.5px;white-space:pre-wrap;overflow-wrap:anywhere}.to .p{color:var(--b)}.to .c{color:#A78BFA}.to .s{color:#fff}.to .r{color:var(--mu)}.to .e{color:#FB7185}.to .g{color:#FBBF24}
+.tin{display:flex;gap:8px;padding:10px 14px;border-top:1px solid var(--ln)}.tin span{color:var(--b);white-space:nowrap}.tin input{flex:1;min-width:0;background:none;border:0;outline:0}
+.fg{margin-bottom:11px}.fg label{display:block;color:var(--b);font-size:11px;margin-bottom:4px}.fg label::before{content:"$ "}
+.fg input,.fg textarea{width:100%;background:rgba(0,0,0,.4);border:1px solid var(--ln);border-radius:8px;padding:9px 12px;outline:0}.fg input:focus,.fg textarea:focus{border-color:var(--b)}.fg textarea{height:90px;resize:vertical}
+.ex{width:100%;padding:13px;border:0;border-radius:10px;background:var(--g);color:#06070D;font-weight:700;letter-spacing:.08em;cursor:pointer}.ex:disabled{opacity:.7}
+.ln{display:flex;gap:10px;align-items:center;padding:10px 12px;border:1px solid var(--ln);border-radius:10px;margin-top:8px;text-decoration:none;color:var(--tx);word-break:break-all}.ln:hover{border-color:var(--b)}
+/* taskbar */
+#tk{position:fixed;left:0;right:0;bottom:0;height:48px;z-index:300;display:flex;align-items:center;gap:6px;padding:0 8px env(safe-area-inset-bottom);background:rgba(6,7,13,.86);backdrop-filter:blur(16px);border-top:1px solid var(--ln)}
+#tk button{height:34px;padding:0 12px;border:1px solid var(--ln);border-radius:8px;background:rgba(255,255,255,.04);cursor:pointer;white-space:nowrap}
+#tk button:hover{border-color:var(--b)}#tk .st0{background:var(--g);color:#06070D;font-weight:700;border:0}
+#tasks{flex:1;display:flex;gap:6px;overflow-x:auto;min-width:0}#tasks button.on{border-color:var(--a);background:rgba(var(--ar),.2)}
+#clk{color:var(--mu);padding:0 6px}
+#sm{position:fixed;left:8px;bottom:54px;z-index:310;width:230px;padding:8px;background:rgba(8,10,20,.96);border:1px solid rgba(var(--ar),.5);border-radius:12px;backdrop-filter:blur(14px);animation:pop .18s both}
+#sm button{display:flex;gap:10px;width:100%;padding:8px 10px;border:0;background:none;border-radius:8px;cursor:pointer;text-align:left}#sm button:hover{background:rgba(var(--ar),.2)}
+#toast{position:fixed;left:50%;bottom:62px;transform:translateX(-50%);z-index:400;background:rgba(10,12,22,.95);border:1px solid var(--b);padding:8px 16px;border-radius:99px;font-size:12px}
+#pr{display:none}
+@media(max-width:700px){
+ #hero{display:none}#dk{right:14px;grid-auto-flow:row;grid-template-columns:repeat(4,1fr);grid-template-rows:none;grid-auto-rows:88px;grid-auto-columns:auto;top:20px;overflow:auto}
+ .win{inset:0 0 48px 0!important;width:auto!important;height:auto!important;border-radius:0;resize:none}.tb{cursor:default}.bd{padding:14px}
+ .fg input,.fg textarea,.tin input,#pw{font-size:16px}
 }
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.lt,.rv{opacity:1!important;transform:none!important}html{scroll-behavior:auto}}
-@media print{#boot,#aur,#net,#cg,#prog,nav,.mq,#terminal-section,.tf,.cta,.ham,body::after{display:none!important}
- body{background:#fff}*{color:#000!important;-webkit-text-fill-color:#000!important;background-image:none!important;box-shadow:none!important}
- .glass,.card{background:none!important;border:1px solid #ccc}.rv,.lt{opacity:1!important;transform:none!important}.sec{padding:24px 0;border:0}.hero{min-height:0}.sk .t i{width:var(--w)!important;background:#000!important}}
-
-/* ===== v4: themes ===== */
-:root{--cr:34,211,238;--vr:139,92,246;--pr:244,114,182;--a1:#5B3FD9;--a2:#0E8FB3;--a3:#B13A7C}
-html[data-theme=emerald]{--c:#2DD4BF;--v:#22C55E;--p:#A3E635;--cr:45,212,191;--vr:34,197,94;--pr:163,230,53;--a1:#0F766E;--a2:#15803D;--a3:#4D7C0F}
-html[data-theme=sunset]{--c:#FBBF24;--v:#F97316;--p:#F43F5E;--cr:251,191,36;--vr:249,115,22;--pr:244,63,94;--a1:#B45309;--a2:#C2410C;--a3:#9F1239}
-html[data-theme=crimson]{--c:#FB7185;--v:#E11D48;--p:#A78BFA;--cr:251,113,133;--vr:225,29,72;--pr:167,139,250;--a1:#9F1239;--a2:#6D28D9;--a3:#BE123C}
-/* ===== v4: new components ===== */
-.lede{font-size:clamp(14px,1.6vw,16px);line-height:1.75;color:#B7BBCF;max-width:54ch;margin:6px 0 0}
-.skip{position:absolute;left:-999px;top:8px;z-index:200;background:var(--c);color:#06070D;padding:10px 16px;border-radius:8px;font-weight:600}.skip:focus{left:8px}
-.navr{display:flex;gap:8px;align-items:center}
-.ib{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--text);font-size:18px;cursor:pointer;display:grid;place-items:center;transition:border-color .2s,transform .2s}
-.ib:hover{border-color:var(--c);transform:translateY(-2px)}
-#th i{width:18px;height:18px;border-radius:50%;background:var(--g);display:block;box-shadow:0 0 14px rgba(var(--cr),.6)}
-nav ul a{position:relative}
-nav ul a.act{color:#fff}
-nav ul a.act::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:var(--g);border-radius:2px}
-.onlym{display:none}
-#toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));transform:translate(-50%,20px);opacity:0;pointer-events:none;background:rgba(10,12,22,.92);border:1px solid rgba(var(--cr),.4);color:var(--text);font:13px var(--mono);padding:10px 18px;border-radius:999px;z-index:120;transition:opacity .3s,transform .3s;backdrop-filter:blur(10px);max-width:90vw;text-align:center}
-#toast.show{opacity:1;transform:translate(-50%,0)}
-#top-btn{position:fixed;right:max(18px,env(safe-area-inset-right));bottom:calc(20px + env(safe-area-inset-bottom));width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:rgba(10,12,22,.8);color:var(--text);font-size:18px;cursor:pointer;opacity:0;pointer-events:none;transform:translateY(10px);transition:opacity .3s,transform .3s,border-color .2s;z-index:55;backdrop-filter:blur(10px)}
-#top-btn.show{opacity:1;pointer-events:auto;transform:none}#top-btn:hover{border-color:var(--c)}
-#pal{position:fixed;inset:0;z-index:150;background:rgba(3,4,9,.7);backdrop-filter:blur(8px);display:flex;align-items:flex-start;justify-content:center;padding:12vh 16px 16px}
-#pal[hidden]{display:none}
-.pbox{width:min(560px,100%);background:rgba(10,12,22,.96);border:1px solid rgba(var(--vr),.4);border-radius:16px;overflow:hidden;box-shadow:0 30px 90px rgba(0,0,0,.6);animation:fin .25s both}
-#pin{width:100%;background:none;border:0;border-bottom:1px solid var(--line);padding:18px 20px;color:#fff;font:16px var(--mono);outline:0}
-#pls{list-style:none;max-height:min(50vh,360px);overflow-y:auto;padding:8px}
-#pls li{display:flex;justify-content:space-between;gap:12px;padding:12px 14px;border-radius:10px;cursor:pointer;font-size:14px}
-#pls li small{color:var(--mute);font:11px var(--mono)}
-#pls li.sel,#pls li:hover{background:rgba(var(--vr),.18)}
-.phint{padding:10px 18px;border-top:1px solid var(--line);font:11px var(--mono);color:var(--mute)}
-.card.on{transition:border-color .3s,transform .12s,opacity .8s}
-.card.on:hover{transform:perspective(900px) translateY(-4px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg))}
-.to,.tm{white-space:pre-wrap;word-break:break-word;overflow-wrap:anywhere}
-/* ===== v4: responsive ===== */
-.wrap{padding-left:max(clamp(18px,4vw,28px),env(safe-area-inset-left));padding-right:max(clamp(18px,4vw,28px),env(safe-area-inset-right))}
-nav{padding-top:env(safe-area-inset-top)}
-.hero{min-height:calc(100vh - 64px);min-height:calc(100dvh - 64px)}
-@media(max-width:1100px){.sec .wrap{grid-template-columns:170px 1fr;gap:32px}.skgrid{gap:32px}}
-@media(max-width:900px){
- .sec .wrap{grid-template-columns:1fr}
- nav ul{top:100%;height:calc(100vh - 64px);height:calc(100dvh - 64px);overflow-y:auto}
- nav ul.open li{animation:fin .4s both;animation-delay:calc(var(--k,0)*45ms)}
- nav ul a{display:block;padding:8px 24px;font:700 clamp(22px,6vw,30px) var(--head);color:var(--text)}
- nav ul a.act::after{display:none}nav ul a.act{color:var(--c)}
- .onlym{display:list-item}
- .hero{padding-top:36px}.hero-grid{gap:32px}.mini{max-width:560px}
- .tin input,.tf input,.tf textarea{font-size:16px}
- .cgrid{gap:32px}
-}
-@media(max-width:600px){
- .hero{min-height:auto;padding:36px 0 0}.mq{margin-top:40px}
- h1{font-size:clamp(46px,17vw,84px)}.sub{font-size:13px}.tag{font-size:19px}
- .cta .btn{flex:1 1 calc(50% - 6px);justify-content:center;padding:13px 14px}.cta .btn.fill{flex-basis:100%}
- .sec{padding:56px 0}.sec h2{margin-bottom:20px}
- .about p{font-size:16px}
- .stats>div{flex:1 1 calc(50% - 9px);min-width:0;padding:16px}.stats b{font-size:32px}
- .proj{padding:20px;border-radius:16px}.proj h3{font-size:24px}
- .det ol{padding-left:18px}.card{padding:20px}
- .tl{padding-left:28px}.tl li::before{left:-28px}.tl li{padding-bottom:30px}.tl h3{font-size:18px}
- .to{height:300px;font-size:12px;padding:14px}.tin{padding:12px 14px}
- .hint{padding:8px 14px 12px}.hint button{padding:9px 6px;font-size:12px}
- .tf form{padding:16px}.links a,.links .loc{padding:12px 14px}.cgrid h3{font-size:24px}
- .radarbox{margin-top:32px}
- footer{padding-bottom:calc(38px + env(safe-area-inset-bottom))}
- .navr{gap:6px}.ib{width:42px;height:42px}.logo{font-size:16px}
- .bar{padding:11px 12px}.bar span{font-size:10px}
-}
-@media(max-width:400px){.tin span{display:none}.avail{font-size:11px}h1{font-size:clamp(40px,16.5vw,60px)}.stats>div{flex-basis:100%}}
-@media(max-height:500px) and (orientation:landscape){.hero{min-height:auto;padding:28px 0}}
-@media(hover:none){.glass.on:hover,.card.on:hover,.btn:hover,.links a:hover,.ib:hover{transform:none}.btn:hover{box-shadow:none}}
-@media print{#toast,#top-btn,#pal,.skip,.navr{display:none!important}}
-
-/* ===== v7: name never wraps mid-word ===== */
-.hero-grid>*{min-width:0}
-.hero-grid>div:first-child{container-type:inline-size}
-h1 .ln{white-space:nowrap}
-h1{font-size:clamp(40px,8.4vw,120px)}
-@supports (width:1cqw){h1{font-size:min(138px,16cqw)}}
-@media(max-width:600px){h1{font-size:clamp(40px,12vw,84px)}@supports (width:1cqw){h1{font-size:min(138px,16cqw)}}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media print{body{overflow:visible;background:#fff;color:#000;font-size:11px}html,body{height:auto;overflow:visible}body>*:not(#pr){display:none!important}#pr{display:block!important}#pr *{color:#000!important;background:none!important;-webkit-text-fill-color:#000!important;border-color:#bbb!important}#pr details>*{display:block}#pr .sk u{width:var(--w)!important;background:#000!important}h3,h4{margin-top:12px}}
 </style>
 </head>
 <body>
-<a class="skip" href="#about">Skip to content</a>
-<div id="boot"><div id="bl"></div><div class="bbar"><i id="bb"></i></div><small>click to skip</small></div>
-<div id="aur"><i></i><i></i><i></i></div><canvas id="net"></canvas><div id="cg"></div><div id="prog"></div>
+<canvas id="rain"></canvas><div id="wall"></div>
 
-<nav><div class="wrap">
- <a class="logo" href="#top">NP_SEC</a>
- <ul id="nl"><li><a href="#about">About</a></li><li><a href="#skills">Skills</a></li><li><a href="#projects">Projects</a></li><li><a href="#certs">Certs</a></li><li><a href="#wins">Wins</a></li><li><a href="#journey">Journey</a></li><li><a href="#terminal-section">Terminal</a></li><li><a href="#contact">Contact</a></li><li class="onlym"><a href="#" id="rsm">Resume (PDF)</a></li></ul>
- <div class="navr"><button class="ib" id="kb" aria-label="Open command palette" title="Search (Ctrl+K)">⌕</button><button class="ib" id="th" aria-label="Change theme" title="Change theme"><i></i></button><button class="btn rs" onclick="saveResume()">Resume (PDF)</button><button class="ham" id="hb" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button></div>
-</div></nav>
+<div id="boot"><div id="bl"></div>
+ <form id="login" autocomplete="off"><div class="av">NP</div><h2>Nilesh Patil</h2><p>guest session · NP_OS v8</p>
+  <input id="pw" type="password" placeholder="password (hint: hire-me)" aria-label="Password"><div id="lm" role="status"></div><button class="go" type="submit">LOG IN</button></form></div>
 
-<header class="hero" id="top">
- <div class="wrap"><div class="hero-grid">
-  <div>
-   <div class="avail"><i></i>Open to paid internships &amp; jobs · 2026</div>
-   <h1 id="nm" aria-label="Nilesh Patil">Nilesh Patil</h1>
-   <p class="sub">Computer Engineering Student • Cybersecurity • AI/ML • Software Development</p>
-   <p class="tag">I build security tools, then try to break them.</p>
-   <p class="lede">Intruder alerts that took 8–10 seconds now land in under 3, thanks to asyncio. A face-payment app that a photo could fool now needs a real blink. An RFID tracker that double-counted taps now rejects them.</p>
-   <div class="cta"><a class="btn fill" href="#projects">View projects</a><a class="btn" href="#contact">Contact me</a><button class="btn" onclick="saveResume()">Resume (PDF)</button></div>
-  </div>
-  <div class="term mini">
-   <div class="bar"><i></i><i></i><i></i><span>nilesh@kali:~$</span></div>
-   <div class="tm"><b>nilesh@kali</b>:~$ whoami</div>
-   <div class="tm dim">→ Computer Engineering Student | Cybersecurity &amp; AI/ML Enthusiast, Pune IN</div>
-   <div class="tm"><b>nilesh@kali</b>:~$ skills --active</div>
-   <div class="tm dim">→ <span id="ty"></span><u class="caret"></u></div>
-   <div class="tm"><b>nilesh@kali</b>:~$ date</div>
-   <div class="tm dim">→ <span id="clk"></span> IST · Pune</div>
-  </div>
- </div></div>
- <div class="mq" aria-hidden="true"><div class="mqi"><span>OWASP Top 10</span><span>Burp Suite</span><span>Kali Linux</span><span>Bug Hunting</span><span>Python Security</span><span>VAPT</span><span>Nmap Scanning</span><span>Wireshark</span></div></div>
-</header>
+<main id="os" class="hide">
+ <div id="hero"><h1>NILESH<br>PATIL</h1><p>Computer Engineering Student • Cybersecurity • AI/ML • Software Development</p><p class="t">I build security tools, then try to break them.</p></div>
+ <div id="dk"></div><div id="wins"></div>
+</main>
+<div id="sm" class="hide"></div>
+<div id="tk" class="hide"><button class="st0" id="sb" aria-label="Start menu">⏻ NP_OS</button><div id="tasks"></div><button id="th" title="Change theme" aria-label="Change theme">◐</button><span id="clk"></span></div>
+<div id="toast" class="hide" role="status"></div>
+<div id="pr"></div>
 
-<section class="sec about" id="about"><div class="wrap">
- <h2>About me</h2>
- <div class="rv">
-  <span class="badge">Student &amp; builder</span>
-  <p>I'm <b>Nilesh Patil</b>, a Computer Engineering student in Pune, now in B.E. (Direct Second Year) at P.V.P.I.T. Bavdhan. I work on cybersecurity, AI/ML and software, and I learn mostly by building something and fixing whatever breaks. My intruder detector took 8–10 seconds to alert until I ran capture and upload in parallel with asyncio. My RFID attendance tracker double-counted taps until I added a 1-second firmware lockout and a 10-minute duplicate window. FacePay could be fooled by a photo, so I added liveness checks that need real movement.</p>
-  <p>I completed my <b>Diploma in Computer Engineering</b> from Ajeenkya DY Patil School of Engineering (MSBTE) in 2026 with an <b>84.94% aggregate</b> (88.24% in my final semester), graduating with First Class with Distinction. During my diploma, I developed a strong interest in cybersecurity — particularly web application security and bug bounty concepts — alongside programming, networking, and AI/ML.</p>
-  <p>I enjoy building projects that bring these interests together, from security tools to hardware-integrated systems, while continuing to strengthen my technical foundation as I progress through my engineering degree.</p>
-  <blockquote class="quote">Understanding how systems can be broken is often the first step to learning how to build them securely.</blockquote>
-  <div class="stats"><div><b>3+</b><span>Projects</span></div><div><b>4+</b><span>Certifications</span></div><div><b>2026</b><span>Diploma completed</span></div></div>
- </div>
-</div></section>
-
-<section class="sec" id="skills"><div class="wrap">
- <h2>Technical skills</h2>
- <div class="rv"><div class="skgrid">
-  <div><h3>Cybersecurity</h3>
-   <div class="sk"><div>OWASP Top 10<em>75%</em></div><div class="t"><i data-w="75"></i></div></div>
-   <div class="sk"><div>VAPT<em>60%</em></div><div class="t"><i data-w="60"></i></div></div>
-   <div class="sk"><div>Bug Hunting<em>65%</em></div><div class="t"><i data-w="65"></i></div></div>
-   <div class="sk"><div>Web App Security<em>65%</em></div><div class="t"><i data-w="65"></i></div></div></div>
-  <div><h3>Programming</h3>
-   <div class="sk"><div>Python<em>75%</em></div><div class="t"><i data-w="75"></i></div></div>
-   <div class="sk"><div>C++<em>65%</em></div><div class="t"><i data-w="65"></i></div></div>
-   <div class="sk"><div>SQL / PL-SQL<em>65%</em></div><div class="t"><i data-w="65"></i></div></div>
-   <div class="sk"><div>Java<em>60%</em></div><div class="t"><i data-w="60"></i></div></div></div>
-  <div><h3>Networking</h3>
-   <div class="sk"><div>TCP/IP<em>70%</em></div><div class="t"><i data-w="70"></i></div></div>
-   <div class="sk"><div>OSI Model<em>70%</em></div><div class="t"><i data-w="70"></i></div></div>
-   <div class="sk"><div>Packet Analysis<em>55%</em></div><div class="t"><i data-w="55"></i></div></div></div>
-  <div><h3>Tools</h3><div class="tags"><span>Burp Suite</span><span>Nmap</span><span>Wireshark</span><span>Kali Linux</span><span>Metasploit</span><span>SQLMap</span><span>OpenCV</span><span>Git</span></div></div>
- </div>
- <div class="radarbox"><canvas id="rd" width="360" height="360" role="img" aria-label="Skill radar chart"></canvas></div></div>
-</div></section>
-
-<section class="sec" id="projects"><div class="wrap">
- <h2>Projects</h2>
- <div>
-  <article class="proj glass rv">
-   <div class="kind">Security tool</div>
-   <h3>Laptop Intruder Detection System</h3>
-   <p>Intelligent surveillance that triggers on failed logins — captures the intruder silently and fires alerts with location in real time.</p>
-   <ul class="feat"><li>Detects failed login attempts autonomously</li><li>Silent photo/video capture via OpenCV</li><li>Telegram &amp; email alerts with evidence</li><li>Location tracking included</li></ul>
-   <div class="tags"><span>Python</span><span>OpenCV</span><span>SMTP</span><span>Telegram API</span><span>GPS</span></div>
-   <details><summary>How it works</summary><div class="det">
-    <ol><li><b>Login attempt monitor.</b> Hooks into the OS authentication layer using system logs and PAM. Any failed login triggers the detection pipeline immediately.</li>
-    <li><b>Webcam capture.</b> OpenCV captures a burst of photos and 10 seconds of video of whoever is in front of the laptop.</li>
-    <li><b>Location lookup.</b> Public IP geolocation APIs return the approximate location of the laptop.</li>
-    <li><b>Telegram and email alert.</b> Within about 3 seconds, the photo, video clip, timestamp and location are sent through the Telegram Bot API and SMTP email.</li>
-    <li><b>Evidence logging.</b> Captures are timestamped and stored locally in an encrypted folder. Each incident gets a unique ID so repeated attempts can be tracked.</li></ol>
-    <div><h4>Stack in depth</h4><dl><dt>Python</dt><dd>Automation engine, system hooks, orchestration</dd><dt>OpenCV</dt><dd>Webcam capture, frame processing, video encoding</dd><dt>Telegram API</dt><dd>Instant push alerts with media</dd><dt>smtplib</dt><dd>Email delivery with attachments as backup</dd><dt>IP geolocation</dt><dd>Network-based location and city data</dd><dt>PAM / system logs</dt><dd>Login event monitoring and triggers</dd></dl></div>
-    <div class="note"><b>Security perspective.</b> Insider attacks, shoulder surfing and physical device theft are among the most overlooked attack vectors. Automating evidence capture on the device goes beyond typical software-only security tools.</div>
-    <div><h4>Challenges and how I solved them</h4><ul class="ch"><li><b>Speed: a 3-second alert window.</b> The first version took 8–10 seconds from trigger to alert. Async Python (asyncio) runs capture and upload in parallel and brings it under 3 seconds.</li><li><b>Reliability without internet.</b> If Wi-Fi is down, alerts queue locally and send as soon as connectivity returns, so no evidence is lost.</li></ul></div>
-   </div></details>
-  </article>
-
-  <article class="proj glass rv">
-   <div class="kind">ML + fintech</div>
-   <h3>FacePay — Face Recognition Payment</h3>
-   <p>Biometric Android payment concept using face recognition as an alternative to PIN-based authentication, redirecting to UPI apps after identity verification.</p>
-   <ul class="feat"><li>Face recognition as an authentication factor</li><li>Seamless UPI app redirection</li><li>ML-powered identity verification</li><li>Explores biometric authentication as an alternative mechanism</li></ul>
-   <div class="tags"><span>Java</span><span>Android Studio</span><span>ML Kit</span><span>UPI API</span></div>
-   <details><summary>How it works</summary><div class="det">
-    <ol><li><b>Face enrollment.</b> On first launch, the user's face is captured from several angles with the front camera. ML Kit face detection processes the images and the face template is stored on the device.</li>
-    <li><b>Liveness detection.</b> To resist photo and video spoofing, the app asks the user to blink, smile or turn their head.</li>
-    <li><b>Face matching.</b> At payment time the live camera feed is compared against the stored template, with a high match threshold balancing security and usability.</li>
-    <li><b>UPI deep link redirect.</b> After a successful match, the app builds a UPI deep link with the merchant details and opens the user's UPI app (GPay, PhonePe, BHIM) for final confirmation.</li>
-    <li><b>Transaction logging.</b> Every attempt, successful or not, is logged with timestamp, match score and device ID. Three failed attempts trigger a lockout to block brute force.</li></ol>
-    <div><h4>Stack in depth</h4><dl><dt>Java (Android)</dt><dd>App logic, UI, intent handling, lifecycle</dd><dt>ML Kit Face</dt><dd>Real-time face detection and landmark extraction</dd><dt>Camera2</dt><dd>Front camera feed with custom preview</dd><dt>UPI deep link</dt><dd>Cross-app payment redirect</dd><dt>Room database</dt><dd>Local storage for face data and auth logs</dd><dt>Android Keystore</dt><dd>Secure key storage for encrypting biometric data</dd></dl></div>
-    <div class="note"><b>Security perspective.</b> PINs and passwords can be stolen, guessed or shoulder-surfed. FacePay explores biometric authentication as an alternative, with on-device processing so biometric data never leaves the phone. It is a student exploration of privacy-conscious security design, not a claim of complete or unbreakable security.</div>
-    <div><h4>Challenges and how I solved them</h4><ul class="ch"><li><b>Anti-spoofing.</b> Photo attacks are the main weakness of face authentication. Multi-frame liveness checks that need real facial movement block printed photos and screen videos.</li><li><b>Lighting variation.</b> Tuned ML Kit parameters and added image preprocessing (histogram equalization) to keep recognition steady across lighting conditions.</li><li><b>UPI app compatibility.</b> UPI apps handle deep links differently. Tested with GPay, PhonePe, Paytm and BHIM, and built a layer that detects installed apps and builds the right link format.</li></ul></div>
-   </div></details>
-  </article>
-
-  <article class="proj glass rv">
-   <div class="kind">Hardware</div>
-   <h3>RFID Attendance System</h3>
-   <p>Built and demoed at TechFusion Fest — a hardware-software attendance system with real-time RFID tracking and automated reporting.</p>
-   <ul class="feat"><li>Contactless RFID attendance tracking</li><li>Real-time hardware and software sync</li><li>Automated reporting pipeline</li><li>Showcased at TechFusion Fest, ADYPSOE</li></ul>
-   <div class="tags"><span>RFID Module</span><span>Arduino</span><span>Python</span><span>Database</span></div>
-   <details><summary>How it works</summary><div class="det">
-    <ol><li><b>Card tap detection.</b> Each student has a unique 13.56 MHz MIFARE card. Tapping the RC522 reader sends the card's UID to the Arduino Uno over SPI.</li>
-    <li><b>Arduino serial processing.</b> The Arduino debounces repeated reads (1-second lockout per card) and sends the UID to the computer over USB serial at 9600 baud.</li>
-    <li><b>Python backend.</b> A pyserial script receives the UID, looks up the student's name and roll number in SQLite and records the timestamp within 200 ms of the tap.</li>
-    <li><b>Database and records.</b> SQLite holds student profiles and attendance records. Duplicate entries within a 10-minute window are rejected.</li>
-    <li><b>Real-time dashboard.</b> A Tkinter dashboard shows each tap live with name, photo and time. Teachers can export CSV reports for any date range.</li></ol>
-    <div><h4>Stack in depth</h4><dl><dt>Arduino Uno</dt><dd>Reads RFID over SPI, sends UID via serial</dd><dt>RFID RC522</dt><dd>13.56 MHz contactless reader, 1–5 cm range</dd><dt>Python + pyserial</dt><dd>Serial handling and backend logic</dd><dt>SQLite3</dt><dd>Student records and attendance logs</dd><dt>Tkinter</dt><dd>Live dashboard and CSV reports</dd><dt>MIFARE cards</dt><dd>Student ID cards with unique hardware UIDs</dd></dl></div>
-    <div class="note"><b>Security perspective.</b> RFID cards can be cloned with tools like Proxmark3. This design treats UIDs as identifiers, not secrets. A production version would add encrypted card data and server-side validation to prevent cloning.</div>
-    <div><h4>Challenges and how I solved them</h4><ul class="ch"><li><b>Preventing double registration.</b> Readers can fire several reads per second. A 1-second lockout in the firmware and a 10-minute duplicate window in the database stop accidental double marking.</li><li><b>Serial reliability.</b> USB serial links can drop on Windows. Auto-reconnect logic in Python re-establishes the port without restarting the app.</li><li><b>Demo reliability.</b> For the TechFusion Fest demo I ran 48-hour stress tests with 500+ card taps, fixed UID parsing edge cases and prepared a backup SD card with the software pre-configured.</li></ul></div>
-   </div></details>
-  </article>
- </div>
-</div></section>
-
-<section class="sec" id="certs"><div class="wrap">
- <h2>Certifications</h2>
- <div class="cards rv">
-  <div class="card glass"><small>Great Learning</small><h3>Cybersecurity Course Completion</h3><p>Verified</p><div class="d">2024</div></div>
-  <div class="card glass"><small>Workshop certificate</small><h3>3-Day Cybersecurity Intensive Workshop</h3><p>Completed</p><div class="d">2024</div></div>
-  <div class="card glass"><small>Ajeenkya DY Patil SOE</small><h3>TechFusion Fest — Participation &amp; Project Demo</h3><p>Achieved</p><div class="d">2024 — Lohegaon, Pune</div></div>
-  <div class="card glass"><small>Govt. of India</small><h3>Smart India Hackathon (SIH) — Participation</h3><p>Participated</p><div class="d">2024</div></div>
- </div>
-</div></section>
-
-<section class="sec" id="wins"><div class="wrap">
- <h2>Achievements</h2>
- <div class="cards rv">
-  <div class="card glass"><h3>TechFusion Fest Demo</h3><p>Showcased the RFID Attendance System at Ajeenkya DY Patil School of Engineering's technical festival.</p><div class="d">2024 — ADYPSOE</div></div>
-  <div class="card glass"><h3>Smart India Hackathon</h3><p>Participated in SIH, a national-level student hackathon organized by the Government of India.</p><div class="d">2024 — National level</div></div>
-  <div class="card glass"><h3>Cybersecurity Internship — Coding Seekho</h3><p>Completed a cybersecurity internship at Coding Seekho, gaining hands-on exposure to vulnerability assessment and security workflows.</p><div class="d">2024–2025</div></div>
-  <div class="card glass"><h3>Bug Bounty Hunting</h3><p>Learning and practicing web application security through bug bounty methodology — exploring IDOR, XSS, CSRF and authentication flaws on responsible disclosure programs.</p><div class="d">Ongoing, 2024–present</div></div>
-  <div class="card glass"><h3>Security Tool Builder</h3><p>Built the Laptop Intruder Detection System — a functional security tool using computer vision and the Telegram API.</p><div class="d">2024</div></div>
-  <div class="card glass"><h3>Android ML Developer</h3><p>Built FacePay — an Android app integrating machine learning-based face recognition with UPI payments.</p><div class="d">2024</div></div>
-  <div class="card glass"><h3>Diploma in Computer Engineering — Completed 2026</h3><p>84.94% aggregate · 88.24% final semester · First Class with Distinction.</p><div class="d">2023–2026 — MSBTE</div></div>
-  <div class="card glass"><h3>B.E. Computer Engineering — Direct Second Year</h3><p>Currently pursuing B.E. in Computer Engineering through Direct Second Year at P.V.P.I.T. Bavdhan (College Code: 6122).</p><div class="d">2026–present</div></div>
- </div>
-</div></section>
-
-<section class="sec" id="journey"><div class="wrap">
- <h2>Journey</h2>
- <ol class="tl rv">
-  <li><time>2023</time><h3>Diploma begins — Computer Engineering foundation</h3><p>Enrolled at Ajeenkya DY Patil School of Engineering. Developed a strong interest in networking, programming and technology from the start.</p></li>
-  <li><time>Early 2024</time><h3>Cybersecurity deep dive</h3><p>Started exploring bug bounty concepts, OWASP Top 10, Burp Suite and Kali Linux. Built my first security tool — the Laptop Intruder Detection System.</p></li>
-  <li><time>Mid 2024</time><h3>TechFusion Fest + SIH</h3><p>Showcased the RFID Attendance System at TechFusion Fest and participated in Smart India Hackathon.</p></li>
-  <li><time>2024–2025</time><h3>Cybersecurity internship at Coding Seekho</h3><p>Completed a cybersecurity internship at Coding Seekho, gaining hands-on exposure to VAPT workflows and vulnerability assessment practices.</p></li>
-  <li><time>2025</time><h3>Bug bounty &amp; web security</h3><p>Continued learning and practicing web application security and bug bounty methodology — IDOR, XSS, authentication vulnerabilities, CSRF and business logic flaws.</p></li>
-  <li><time>2026</time><h3>Diploma completed — 84.94%</h3><p>Completed Diploma in Computer Engineering with 84.94% aggregate, 88.24% final semester, First Class with Distinction (MSBTE).</p></li>
-  <li class="now"><time>2026 onward</time><h3>B.E. Computer Engineering — Direct Second Year</h3><p>Started Direct Second Year engineering at P.V.P.I.T. Bavdhan (College Code: 6122). Current focus: cybersecurity, AI/ML, software development and networking.</p></li>
- </ol>
-</div></section>
-
-
-<section class="sec" id="terminal-section"><div class="wrap">
- <h2>Talk to the system</h2>
- <div class="rv"><div class="term">
-  <div class="bar"><i></i><i></i><i></i><span>NILESH@KALI — interactive shell · online</span></div>
-  <div class="to" id="to" aria-live="polite"></div>
-  <div class="tin"><span>nilesh@kali:~$</span><input id="ti" type="text" placeholder="Type a command." autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="send" aria-label="Terminal command"></div>
-  <div class="hint">Try: <button data-c="help">help</button><button data-c="whoami">whoami</button><button data-c="skills">skills</button><button data-c="projects">projects</button><button data-c="contact">contact</button><button data-c="nmap">nmap</button><button data-c="hack">hack</button><button data-c="secret">secret</button><button data-c="clear">clear</button></div>
- </div></div>
-</div></section>
-
-<section class="sec" id="contact"><div class="wrap">
- <h2>Let's connect</h2>
- <div class="cgrid rv">
-  <div>
-   <h3>Open to paid internships and jobs</h3>
-   <p style="max-width:44ch">I'm looking for paid internships and full-time roles in cybersecurity, AI/ML or software development. I'm also open to project collaboration or a conversation about any of them — I'd love to connect.</p>
-   <div class="links">
-    <a href="mailto:patilnilesh1628@gmail.com"><span class="ic">📧</span><div><b>patilnilesh1628@gmail.com</b><small>Primary email</small></div></a>
-    <a href="https://www.linkedin.com/in/nileshpatil1628" target="_blank" rel="noopener"><span class="ic">💼</span><div><b>linkedin.com/in/nileshpatil1628</b><small>LinkedIn</small></div></a>
-    <a href="https://github.com/itsnilesh1" target="_blank" rel="noopener"><span class="ic">⚡</span><div><b>github.com/itsnilesh1</b><small>GitHub</small></div></a>
-    <div class="loc"><span class="ic">📍</span><div><b>Pune, Maharashtra, India</b><small>Location</small></div></div>
-   </div>
-  </div>
-  <div class="term tf glass">
-   <div class="bar"><i></i><i></i><i></i><span>SEND_MESSAGE.sh</span></div>
-   <form id="cf" novalidate>
-    <div class="fg"><label for="fn">enter_name</label><input id="fn" type="text" placeholder="Your name..." autocomplete="name"></div>
-    <div class="fg"><label for="fe">enter_email</label><input id="fe" type="email" placeholder="your@email.com" autocomplete="email"></div>
-    <div class="fg"><label for="fs">enter_subject</label><input id="fs" type="text" placeholder="Opportunity / Collaboration..."></div>
-    <div class="fg"><label for="fm">enter_message</label><textarea id="fm" placeholder="Your message..."></textarea></div>
-    <input type="text" id="hp" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px"><button class="exec" type="submit" id="fb">EXECUTE — SEND MESSAGE</button>
-    <div id="fstat" role="status" aria-live="polite"></div>
-   </form>
-  </div>
- </div>
-</div></section>
-
-<footer><div class="wrap" style="display:block"><div class="flogo">NILESH PATIL</div>Computer Engineering Student · Cybersecurity &amp; AI/ML Enthusiast · Pune, India<br>Crafted with passion and a lot of chai — <span id="yr">2026</span></div></footer>
-
-<div id="toast" role="status" aria-live="polite"></div>
-<button id="top-btn" aria-label="Back to top">↑</button>
-<div id="pal" role="dialog" aria-modal="true" aria-label="Command palette" hidden><div class="pbox"><input id="pin" placeholder="Jump to a section or run an action..." autocomplete="off" aria-label="Search commands"><ul id="pls"></ul><div class="phint">↑↓ navigate · Enter select · Esc close</div></div></div>
 <script>
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
-const RM=matchMedia('(prefers-reduced-motion:reduce)').matches,FINE=matchMedia('(hover:hover) and (pointer:fine)').matches;
-$('#yr').textContent=new Date().getFullYear();
-const T={c:'34,211,238',v:'139,92,246'};
+const RM=matchMedia('(prefers-reduced-motion:reduce)').matches,esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.remove('hide');clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.add('hide'),2200)}
 
-/* name letters */
-(function(){let i=0;$('#nm').innerHTML=['NILESH','PATIL'].map(w=>'<span class="ln" aria-hidden="true">'+[...w].map(c=>`<span class="lt" style="--i:${i++}">${c}</span>`).join('')+'</span>').join('')})();
+/* ---------- content ---------- */
+const SK=[['Cybersecurity',[['OWASP Top 10',75],['VAPT',60],['Bug Hunting',65],['Web App Security',65]]],['Programming',[['Python',75],['C++',65],['SQL / PL-SQL',65],['Java',60]]],['Networking',[['TCP/IP',70],['OSI Model',70],['Packet Analysis',55]]]];
+const PJ=[
+{k:'Security tool',t:'Laptop Intruder Detection System',d:'Intelligent surveillance that triggers on failed logins — captures the intruder silently and fires alerts with location in real time.',f:['Detects failed login attempts autonomously','Silent photo/video capture via OpenCV','Telegram & email alerts with evidence','Location tracking included'],g:['Python','OpenCV','SMTP','Telegram API','GPS'],
+ s:['<b>Login attempt monitor.</b> Hooks into the OS authentication layer using system logs and PAM. Any failed login triggers the detection pipeline immediately.','<b>Webcam capture.</b> OpenCV captures a burst of photos and 10 seconds of video of whoever is in front of the laptop.','<b>Location lookup.</b> Public IP geolocation APIs return the approximate location of the laptop.','<b>Telegram and email alert.</b> Within about 3 seconds, the photo, video clip, timestamp and location are sent through the Telegram Bot API and SMTP email.','<b>Evidence logging.</b> Captures are timestamped and stored locally in an encrypted folder. Each incident gets a unique ID so repeated attempts can be tracked.'],
+ n:'Insider attacks, shoulder surfing and physical device theft are among the most overlooked attack vectors. Automating evidence capture on the device goes beyond typical software-only security tools.',
+ c:[['Speed: a 3-second alert window.','The first version took 8–10 seconds from trigger to alert. Async Python (asyncio) runs capture and upload in parallel and brings it under 3 seconds.'],['Reliability without internet.','If Wi-Fi is down, alerts queue locally and send as soon as connectivity returns, so no evidence is lost.']]},
+{k:'ML + fintech',t:'FacePay — Face Recognition Payment',d:'Biometric Android payment concept using face recognition as an alternative to PIN-based authentication, redirecting to UPI apps after identity verification.',f:['Face recognition as an authentication factor','Seamless UPI app redirection','ML-powered identity verification','Explores biometric authentication as an alternative mechanism'],g:['Java','Android Studio','ML Kit','UPI API','Camera2','Room','Android Keystore'],
+ s:['<b>Face enrollment.</b> On first launch, the user\'s face is captured from several angles with the front camera. ML Kit face detection processes the images and the face template is stored on the device.','<b>Liveness detection.</b> To resist photo and video spoofing, the app asks the user to blink, smile or turn their head.','<b>Face matching.</b> At payment time the live camera feed is compared against the stored template, with a high match threshold balancing security and usability.','<b>UPI deep link redirect.</b> After a successful match, the app builds a UPI deep link with the merchant details and opens the user\'s UPI app (GPay, PhonePe, BHIM) for final confirmation.','<b>Transaction logging.</b> Every attempt is logged with timestamp, match score and device ID. Three failed attempts trigger a lockout to block brute force.'],
+ n:'PINs and passwords can be stolen, guessed or shoulder-surfed. FacePay explores biometric authentication as an alternative, with on-device processing so biometric data never leaves the phone. It is a student exploration of privacy-conscious security design, not a claim of complete or unbreakable security.',
+ c:[['Anti-spoofing.','Multi-frame liveness checks that need real facial movement block printed photos and screen videos.'],['Lighting variation.','Tuned ML Kit parameters and added image preprocessing (histogram equalization) to keep recognition steady across lighting conditions.'],['UPI app compatibility.','Tested with GPay, PhonePe, Paytm and BHIM, and built a layer that detects installed apps and builds the right link format.']]},
+{k:'Hardware',t:'RFID Attendance System',d:'Built and demoed at TechFusion Fest — a hardware-software attendance system with real-time RFID tracking and automated reporting.',f:['Contactless RFID attendance tracking','Real-time hardware and software sync','Automated reporting pipeline','Showcased at TechFusion Fest, ADYPSOE'],g:['RFID RC522','Arduino Uno','Python + pyserial','SQLite3','Tkinter','MIFARE'],
+ s:['<b>Card tap detection.</b> Each student has a unique 13.56 MHz MIFARE card. Tapping the RC522 reader sends the card\'s UID to the Arduino Uno over SPI.','<b>Arduino serial processing.</b> The Arduino debounces repeated reads (1-second lockout per card) and sends the UID to the computer over USB serial at 9600 baud.','<b>Python backend.</b> A pyserial script receives the UID, looks up the student\'s name and roll number in SQLite and records the timestamp within 200 ms of the tap.','<b>Database and records.</b> SQLite holds student profiles and attendance records. Duplicate entries within a 10-minute window are rejected.','<b>Real-time dashboard.</b> A Tkinter dashboard shows each tap live with name, photo and time. Teachers can export CSV reports for any date range.'],
+ n:'RFID cards can be cloned with tools like Proxmark3. This design treats UIDs as identifiers, not secrets. A production version would add encrypted card data and server-side validation to prevent cloning.',
+ c:[['Preventing double registration.','A 1-second lockout in the firmware and a 10-minute duplicate window in the database stop accidental double marking.'],['Serial reliability.','Auto-reconnect logic in Python re-establishes the port without restarting the app.'],['Demo reliability.','For the TechFusion Fest demo I ran 48-hour stress tests with 500+ card taps, fixed UID parsing edge cases and prepared a backup SD card with the software pre-configured.']]}];
+const CE=[['Great Learning','Cybersecurity Course Completion','Verified','2024'],['Workshop certificate','3-Day Cybersecurity Intensive Workshop','Completed','2024'],['Ajeenkya DY Patil SOE','TechFusion Fest — Participation & Project Demo','Achieved','2024 — Lohegaon, Pune'],['Govt. of India','Smart India Hackathon (SIH) — Participation','Participated','2024']];
+const WN=[['TechFusion Fest Demo','Showcased the RFID Attendance System at Ajeenkya DY Patil School of Engineering\'s technical festival.','2024 — ADYPSOE'],['Smart India Hackathon','Participated in SIH, a national-level student hackathon organized by the Government of India.','2024 — National level'],['Cybersecurity Internship — Coding Seekho','Completed a cybersecurity internship at Coding Seekho, gaining hands-on exposure to vulnerability assessment and security workflows.','2024–2025'],['Bug Bounty Hunting','Learning and practicing web application security through bug bounty methodology — exploring IDOR, XSS, CSRF and authentication flaws on responsible disclosure programs.','Ongoing, 2024–present'],['Security Tool Builder','Built the Laptop Intruder Detection System — a functional security tool using computer vision and the Telegram API.','2024'],['Android ML Developer','Built FacePay — an Android app integrating machine learning-based face recognition with UPI payments.','2024'],['Diploma in Computer Engineering — Completed 2026','84.94% aggregate · 88.24% final semester · First Class with Distinction.','2023–2026 — MSBTE'],['B.E. Computer Engineering — Direct Second Year','Currently pursuing B.E. in Computer Engineering through Direct Second Year at P.V.P.I.T. Bavdhan (College Code: 6122).','2026–present']];
+const JR=[['2023','Diploma begins — Computer Engineering foundation','Enrolled at Ajeenkya DY Patil School of Engineering. Developed a strong interest in networking, programming and technology from the start.'],['Early 2024','Cybersecurity deep dive','Started exploring bug bounty concepts, OWASP Top 10, Burp Suite and Kali Linux. Built my first security tool — the Laptop Intruder Detection System.'],['Mid 2024','TechFusion Fest + SIH','Showcased the RFID Attendance System at TechFusion Fest and participated in Smart India Hackathon.'],['2024–2025','Cybersecurity internship at Coding Seekho','Completed a cybersecurity internship at Coding Seekho, gaining hands-on exposure to VAPT workflows and vulnerability assessment practices.'],['2025','Bug bounty & web security','Continued learning and practicing web application security and bug bounty methodology — IDOR, XSS, authentication vulnerabilities, CSRF and business logic flaws.'],['2026','Diploma completed — 84.94%','Completed Diploma in Computer Engineering with 84.94% aggregate, 88.24% final semester, First Class with Distinction (MSBTE).'],['2026 onward','B.E. Computer Engineering — Direct Second Year','Started Direct Second Year engineering at P.V.P.I.T. Bavdhan (College Code: 6122). Current focus: cybersecurity, AI/ML, software development and networking.']];
+const lis=a=>a.map(x=>'<li>'+x+'</li>').join('');
+const R={
+about:()=>`<p class="lead">I build security tools, then try to break them.</p><p>Intruder alerts that took 8–10 seconds now land in under 3, thanks to asyncio. A face-payment app that a photo could fool now needs a real blink. An RFID tracker that double-counted taps now rejects them.</p><p>I'm <b>Nilesh Patil</b>, a Computer Engineering student in Pune, now in B.E. (Direct Second Year) at P.V.P.I.T. Bavdhan. I work on cybersecurity, AI/ML and software, and I learn mostly by building something and fixing whatever breaks. My intruder detector took 8–10 seconds to alert until I ran capture and upload in parallel with asyncio. My RFID attendance tracker double-counted taps until I added a 1-second firmware lockout and a 10-minute duplicate window. FacePay could be fooled by a photo, so I added liveness checks that need real movement.</p><p>I completed my <b>Diploma in Computer Engineering</b> from Ajeenkya DY Patil School of Engineering (MSBTE) in 2026 with an <b>84.94% aggregate</b> (88.24% in my final semester), graduating with First Class with Distinction. During my diploma, I developed a strong interest in cybersecurity — particularly web application security and bug bounty concepts — alongside programming, networking, and AI/ML.</p><p>I enjoy building projects that bring these interests together, from security tools to hardware-integrated systems, while continuing to strengthen my technical foundation as I progress through my engineering degree.</p><div class="bq">Understanding how systems can be broken is often the first step to learning how to build them securely.</div><div class="st"><div><b>3+</b>Projects</div><div><b>4+</b>Certifications</div><div><b>2026</b>Diploma completed</div></div>`,
+skills:()=>SK.map(([h,a])=>`<h4>${h}</h4>`+a.map(([n,v])=>`<div class="sk"><div>${n}<em>${v}%</em></div><i><u data-w="${v}"></u></i></div>`).join('')).join('')+'<h4>Tools</h4><div class="tg">'+['Burp Suite','Nmap','Wireshark','Kali Linux','Metasploit','SQLMap','OpenCV','Git'].map(x=>'<span>'+x+'</span>').join('')+'</div>',
+projects:()=>PJ.map(p=>`<article class="pj"><div class="k">${p.k}</div><h3>${p.t}</h3><p>${p.d}</p><ul>${lis(p.f.map(x=>x.replace(/&/g,'&amp;')))}</ul><div class="tg">${p.g.map(x=>'<span>'+x+'</span>').join('')}</div><details><summary>How it works</summary><ol class="s">${lis(p.s)}</ol><div class="nt"><b>Security perspective.</b> ${p.n}</div><h4>Challenges and how I solved them</h4><ul class="ch">${p.c.map(c=>`<li><b>${c[0]}</b>${c[1]}</li>`).join('')}</ul></details></article>`).join(''),
+certs:()=>CE.map(c=>`<div class="cd"><small>${c[0]}</small><b>${c[1].replace(/&/g,'&amp;')}</b><span class="mu">${c[2]}</span><div class="y">${c[3]}</div></div>`).join(''),
+wins:()=>WN.map(c=>`<div class="cd"><b>${c[0]}</b><span class="mu">${c[1]}</span><div class="y">${c[2]}</div></div>`).join(''),
+journey:()=>'<ol class="tl">'+JR.map((j,i)=>`<li${i==6?' class="now"':''}><time>${j[0]}</time><b>${j[1].replace(/&/g,'&amp;')}</b><span>${j[2]}</span></li>`).join('')+'</ol>',
+mail:()=>`<h3>Open to paid internships and jobs</h3><p>I'm looking for paid internships and full-time roles in cybersecurity, AI/ML or software development. I'm also open to project collaboration or a conversation about any of them — I'd love to connect.</p>
+<a class="ln" href="mailto:patilnilesh1628@gmail.com">📧 patilnilesh1628@gmail.com</a><a class="ln" href="https://www.linkedin.com/in/nileshpatil1628" target="_blank" rel="noopener">💼 linkedin.com/in/nileshpatil1628</a><a class="ln" href="https://github.com/itsnilesh1" target="_blank" rel="noopener">⚡ github.com/itsnilesh1</a><div class="ln">📍 Pune, Maharashtra, India</div><h4>SEND_MESSAGE.sh</h4>
+<form class="cf" novalidate><div class="fg"><label>enter_name</label><input name="n" autocomplete="name" placeholder="Your name..."></div><div class="fg"><label>enter_email</label><input name="e" type="email" autocomplete="email" placeholder="your@email.com"></div><div class="fg"><label>enter_subject</label><input name="s" placeholder="Opportunity / Collaboration..."></div><div class="fg"><label>enter_message</label><textarea name="m" placeholder="Your message..."></textarea></div><input name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px"><button class="ex" type="submit">EXECUTE — SEND MESSAGE</button><div class="mu fs" role="status" style="min-height:20px;margin-top:8px"></div></form>`
+};
+const APPS=[['about','👤','about.txt',560,520],['skills','🛡️','skills.db',460,520],['projects','📁','projects/',700,560],['certs','🎓','certs/',480,460],['wins','🏆','achievements/',520,520],['journey','🧭','journey.log',500,520],['term','⌨️','terminal',620,420],['mail','✉️','mail',500,620]];
 
-/* boot */
-(function(){
- const boot=$('#boot'),go=()=>document.body.classList.add('go');
- if(sessionStorage.getItem('booted')||RM){boot.remove();go();return}
- const L=['Initializing NP_SEC v3.0...','Loading security modules... [OK]','Rendering interface... [OK]','Mounting terminal... [OK]','All systems nominal. Welcome.'];
- const box=$('#bl'),bar=$('#bb');let i=0,done=false;
- const end=()=>{if(done)return;done=true;sessionStorage.setItem('booted','1');boot.classList.add('out');setTimeout(()=>boot.remove(),650);go()};
- boot.addEventListener('click',end);
- (function step(){if(done)return;if(i<L.length){const d=document.createElement('div');d.textContent='> '+L[i];box.appendChild(d);i++;bar.style.width=(i/L.length*100)+'%';setTimeout(step,260)}else setTimeout(end,350)})();
-})();
+/* ---------- window manager ---------- */
+let Z=10,N=0;const W={};
+function focus(id){Object.entries(W).forEach(([k,w])=>{w.el.classList.toggle('on',k==id);w.btn.classList.toggle('on',k==id)});W[id].el.style.zIndex=++Z}
+function openApp(id){
+ if(id==='resume')return saveResume();
+ if(W[id]){W[id].el.classList.remove('hide');focus(id);return}
+ const a=APPS.find(x=>x[0]===id);if(!a)return;
+ const el=document.createElement('section'),vw=innerWidth,vh=innerHeight-48,k=N++%6;
+ el.className='win';el.setAttribute('aria-label',a[2]);
+ el.style.cssText=`width:${Math.min(a[3],vw-20)}px;height:${Math.min(a[4],vh-20)}px;left:${Math.max(10,Math.min(120+k*34,vw-a[3]-10))}px;top:${Math.max(10,30+k*30)}px`;
+ el.innerHTML=`<div class="tb"><button class="d" style="background:#ff5f56" aria-label="Close"></button><button class="d" style="background:#ffbd2e" aria-label="Minimize"></button><button class="d" style="background:#27c93f" aria-label="Maximize"></button><span>nilesh@np_os:~/${a[2]}</span></div><div class="bd"></div>`;
+ const bd=el.querySelector('.bd'),tb=el.querySelector('.tb'),[x,m,z]=el.querySelectorAll('.d');
+ const btn=document.createElement('button');btn.textContent=a[1]+' '+a[2];$('#tasks').appendChild(btn);
+ W[id]={el,btn};$('#wins').appendChild(el);
+ if(id==='term')term(bd);else bd.innerHTML=R[id]();
+ if(id==='mail')mailInit(bd);
+ if(id==='skills')setTimeout(()=>bd.querySelectorAll('u').forEach(u=>u.style.width=u.dataset.w+'%'),60);
+ el.addEventListener('pointerdown',()=>focus(id));
+ x.onclick=()=>{el.remove();btn.remove();delete W[id]};
+ m.onclick=()=>{el.classList.add('hide');btn.classList.remove('on')};
+ z.onclick=tb.ondblclick=()=>el.classList.toggle('mx');
+ btn.onclick=()=>{if(el.classList.contains('hide')||!el.classList.contains('on'))el.classList.remove('hide'),focus(id);else m.onclick()};
+ tb.onpointerdown=e=>{if(e.target.closest('button')||innerWidth<=700||el.classList.contains('mx'))return;const r=el.getBoundingClientRect(),ox=e.clientX-r.left,oy=e.clientY-r.top;tb.setPointerCapture(e.pointerId);
+  tb.onpointermove=v=>{el.style.left=Math.max(-r.width+90,Math.min(innerWidth-90,v.clientX-ox))+'px';el.style.top=Math.max(0,Math.min(innerHeight-90,v.clientY-oy))+'px'};tb.onpointerup=()=>{tb.onpointermove=null}};
+ focus(id);
+}
 
-/* marquee */
-(function(){const m=$('.mqi');m.innerHTML+=m.innerHTML})();
+/* ---------- desktop, start menu, taskbar ---------- */
+$('#dk').innerHTML=[...APPS,['resume','📄','resume.pdf']].map(a=>`<button class="ic" data-o="${a[0]}"><b>${a[1]}</b>${a[2]}</button>`).join('');
+$('#sm').innerHTML=[...APPS,['resume','📄','Save resume (PDF)']].map(a=>`<button data-o="${a[0]}">${a[1]} ${a[2]}</button>`).join('')+'<button data-o="theme">◐ Change theme</button>';
+document.addEventListener('click',e=>{const b=e.target.closest('[data-o]');if(b){if(b.dataset.o==='theme')cycleTheme();else openApp(b.dataset.o);$('#sm').classList.add('hide')}else if(!e.target.closest('#sm,#sb'))$('#sm').classList.add('hide')});
+$('#sb').onclick=()=>$('#sm').classList.toggle('hide');
+$('#th').onclick=cycleTheme;
+setInterval(function f(){$('#clk').textContent=new Date().toLocaleTimeString('en-GB',{timeZone:'Asia/Kolkata',hour12:false});return f}(),1000);
+const TH={violet:['#8B5CF6','#22D3EE','#F472B6','139,92,246'],emerald:['#22C55E','#2DD4BF','#A3E635','34,197,94'],sunset:['#F97316','#FBBF24','#F43F5E','249,115,22'],crimson:['#E11D48','#FB7185','#A78BFA','225,29,72']},TN=Object.keys(TH);
+function setTheme(n,q){const t=TH[n];if(!t)return false;const s=document.documentElement.style;s.setProperty('--a',t[0]);s.setProperty('--b',t[1]);s.setProperty('--c',t[2]);s.setProperty('--ar',t[3]);document.documentElement.dataset.t=n;try{localStorage.setItem('np-theme',n)}catch(_){}if(!q)toast('Theme: '+n);return true}
+function cycleTheme(){setTheme(TN[(TN.indexOf(document.documentElement.dataset.t||'violet')+1)%TN.length])}
+try{setTheme(localStorage.getItem('np-theme')||'violet',1)||setTheme('violet',1)}catch(_){setTheme('violet',1)}
 
-/* typed skills */
-(function(){const S=['OWASP Top 10','Burp Suite','Kali Linux','Bug Hunting','Python Security','VAPT','Nmap Scanning','Wireshark'],el=$('#ty');let s=0,c=0,d=false;
- (function t(){const w=S[s];if(!d){el.textContent=w.slice(0,++c);if(c===w.length){d=true;setTimeout(t,1700);return}}else{el.textContent=w.slice(0,--c);if(c===0){d=false;s=(s+1)%S.length}}setTimeout(t,d?45:90)})()})();
-
-/* network canvas */
-(function(){if(RM)return;const c=$('#net'),x=c.getContext('2d');let w,h;const N=innerWidth<700?28:60,P=[];
- const rs=()=>{w=c.width=innerWidth;h=c.height=innerHeight};rs();addEventListener('resize',rs);
- for(let i=0;i<N;i++)P.push({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35});
- (function f(){x.clearRect(0,0,w,h);for(const p of P){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>w)p.vx*=-1;if(p.y<0||p.y>h)p.vy*=-1;x.fillStyle='rgba('+T.v+',.7)';x.fillRect(p.x,p.y,2,2)}
-  for(let i=0;i<N;i++)for(let j=i+1;j<N;j++){const dx=P[i].x-P[j].x,dy=P[i].y-P[j].y,d=dx*dx+dy*dy;if(d<14400){x.strokeStyle='rgba('+T.c+','+(1-d/14400)*.25+')';x.beginPath();x.moveTo(P[i].x,P[i].y);x.lineTo(P[j].x,P[j].y);x.stroke()}}
-  requestAnimationFrame(f)})()})();
-
-/* pointer glow + card spotlight */
-if(FINE){const cg=$('#cg');addEventListener('pointermove',e=>{cg.style.transform=`translate(${e.clientX}px,${e.clientY}px)`;const g=e.target.closest&&e.target.closest('.glass');if(g){const r=g.getBoundingClientRect();g.style.setProperty('--mx',e.clientX-r.left+'px');g.style.setProperty('--my',e.clientY-r.top+'px')}})}
-
-/* nav + progress */
-addEventListener('scroll',()=>{$('#prog').style.width=(scrollY/(document.documentElement.scrollHeight-innerHeight)*100)+'%'},{passive:true});
-$('#hb').addEventListener('click',()=>{const o=$('#nl').classList.toggle('open');$('#hb').setAttribute('aria-expanded',o)});
-$$('#nl a').forEach(a=>a.addEventListener('click',()=>{$('#nl').classList.remove('open');$('#hb').setAttribute('aria-expanded',false)}));
-
-/* reveal, bars, counters */
-function count(el){const m=/^(\d+)(\+?)$/.exec(el.textContent.trim());if(!m||RM)return;const n=+m[1];if(n>100)return;let k=0;el.textContent='0'+m[2];const t=setInterval(()=>{k++;el.textContent=k+m[2];if(k>=n)clearInterval(t)},220)}
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const t=e.target;t.classList.add('on');t.querySelectorAll('.t i').forEach(b=>{b.style.setProperty('--w',b.dataset.w+'%');b.style.width=b.dataset.w+'%'});t.querySelectorAll('.stats b').forEach(count);io.unobserve(t)}),{threshold:.1});
-$$('.rv').forEach(el=>io.observe(el));
-
-/* radar */
-(function(){const c=$('#rd');if(!c)return;const x=c.getContext('2d'),cx=180,cy=180,R=105,n=5,L=['Cybersecurity','Programming','Networking','Tools','Problem Solving'],V=[.72,.68,.65,.7,.72],C=['#22D3EE','#8B5CF6','#F472B6','#FBBF24','#34D399'];let p=0;
- const pt=(i,r)=>{const a=Math.PI*2/n*i-Math.PI/2;return[cx+r*Math.cos(a),cy+r*Math.sin(a)]};
- function draw(){x.clearRect(0,0,360,360);x.lineWidth=1;
-  for(let k=1;k<=5;k++){x.beginPath();for(let i=0;i<n;i++){const[a,b]=pt(i,R*k/5);i?x.lineTo(a,b):x.moveTo(a,b)}x.closePath();x.strokeStyle='rgba(255,255,255,.1)';x.stroke()}
-  for(let i=0;i<n;i++){const[a,b]=pt(i,R);x.beginPath();x.moveTo(cx,cy);x.lineTo(a,b);x.stroke()}
-  x.beginPath();for(let i=0;i<n;i++){const[a,b]=pt(i,R*V[i]*p);i?x.lineTo(a,b):x.moveTo(a,b)}x.closePath();x.fillStyle='rgba('+T.v+',.22)';x.fill();x.strokeStyle='rgb('+T.v+')';x.lineWidth=2;x.stroke();
-  for(let i=0;i<n;i++){const[a,b]=pt(i,R*V[i]*p);x.beginPath();x.arc(a,b,4,0,7);x.fillStyle=C[i];x.fill();const[lx,ly]=pt(i,R+30);x.font='12px Manrope,sans-serif';x.textAlign='center';x.textBaseline='middle';x.fillText(L[i],lx,ly)}
-  if(p<1){p=Math.min(1,p+.03);requestAnimationFrame(draw)}}
- new IntersectionObserver((e,o)=>{if(e[0].isIntersecting){if(RM)p=1;draw();o.disconnect()}},{threshold:.3}).observe(c);window.rdRedraw=()=>{if(p>=1)draw()}})();
-
-/* terminal */
-const to=$('#to'),ti=$('#ti'),Hs=[];let hi=0;
-const add=(c,t)=>{const d=document.createElement('div');d.className=c;d.textContent=t;to.appendChild(d);to.scrollTop=to.scrollHeight};
+/* ---------- terminal ---------- */
 const CM={
- help:()=>[['p','Available commands:'],['c','whoami       — Who is Nilesh?'],['c','skills       — List all skills'],['c','projects     — View projects'],['c','contact      — Contact info'],['c','nmap         — Run a fake scan'],['c','hack         — Try to hack me 😈'],['c','secret       — Find the secret'],['c','coffee       — Developer fuel'],['c','clear        — Clear terminal']],
+ help:()=>[['p','Available commands:'],['c','whoami · skills · projects · contact · education · certs'],['c','ls                — list apps'],['c','open <app>        — open a window (about, skills, projects, certs, wins, journey, mail)'],['c','theme [name]      — violet, emerald, sunset, crimson'],['c','resume            — save resume as PDF'],['c','nmap · hack · secret · coffee · sudo · clear'],['r','Tip: Tab autocompletes, ↑ shows history.']],
  whoami:()=>[['s','Name    : Nilesh Patil'],['s','Role    : Computer Engineering Student | Cybersecurity & AI/ML'],['s','Location: Pune, Maharashtra, India'],['s','College : P.V.P.I.T. Bavdhan (Direct Second Year)'],['s','Goal    : To build a strong foundation in cybersecurity, AI/ML, and software development'],['p','Status  : Always Learning 👨‍💻📓']],
  skills:()=>[['p','=== SKILL MATRIX ==='],['s','🔐 Cybersecurity : OWASP, VAPT, Bug Hunting, Web AppSec'],['s','💻 Programming   : Python, C++, SQL, Java'],['s','🌐 Networking    : TCP/IP, OSI Model, Packet Analysis'],['s','🛠  Tools         : Burp Suite, Nmap, Wireshark, Kali Linux'],['g','Threat level: EXTREMELY DANGEROUS 💀']],
  projects:()=>[['p','=== DEPLOYED PROJECTS ==='],['c','[01] Laptop Intruder Detection System'],['r','     → Python, OpenCV, Telegram, GPS. Catches intruders silently.'],['c','[02] FacePay — Face Recognition Payment'],['r','     → Android, ML Kit, UPI. Pay with your face.'],['c','[03] RFID Attendance System'],['r','     → Showcased at TechFusion Fest. Hardware meets software.']],
  contact:()=>[['p','=== CONTACT CHANNELS ==='],['s','📧 Email    : patilnilesh1628@gmail.com'],['s','💼 LinkedIn : linkedin.com/in/nileshpatil1628'],['s','⚡ GitHub   : github.com/itsnilesh1'],['s','📍 Location : Pune, India']],
+ education:()=>[['p','=== EDUCATION ==='],['s','B.E. Computer Engineering — Direct Second Year'],['r','  P.V.P.I.T. Bavdhan (College Code: 6122) · 2026–present'],['s','Diploma in Computer Engineering — Completed 2026'],['r','  Ajeenkya DY Patil School of Engineering (MSBTE) · 2023–2026'],['r','  84.94% aggregate · 88.24% final semester · First Class with Distinction']],
+ certs:()=>[['p','=== CERTIFICATIONS ==='],['s','• Great Learning — Cybersecurity Course Completion (2024)'],['s','• 3-Day Cybersecurity Intensive Workshop (2024)'],['s','• TechFusion Fest — Participation & Project Demo (2024)'],['s','• Smart India Hackathon (SIH) — Participation (2024)']],
+ ls:()=>[['c',APPS.map(a=>a[2]).join('   ')+'   resume.pdf']],
+ open:a=>{const m={wins:'wins',achievements:'wins',contact:'mail',terminal:'term'},id=m[a[0]]||a[0];if(APPS.some(x=>x[0]===id)&&id!=='term'||id==='resume'){setTimeout(()=>openApp(id),200);return[['p','Opening '+id+'...']]}return[['e','open: unknown app. Try: ls']]},
  nmap:()=>[['r','Starting Nmap 7.94 ( https://nmap.org )'],['r','Scanning nileshpatil.dev (127.0.0.1)...'],['s','PORT     STATE  SERVICE    VERSION'],['p','22/tcp   open   ssh        OpenSSH'],['p','80/tcp   open   http       Nginx'],['p','443/tcp  open   https      Nginx'],['g','1337/tcp open   hacker     BeastMode v2.0'],['p','Nmap done: 1 IP address, 4 ports open.'],['r','(Yes, port 1337 is real. Welcome.)']],
  hack:()=>[['e','Initiating hack sequence...'],['r','[>>>] Scanning for vulnerabilities...'],['r','[>>>] Attempting SQL injection... FAILED'],['r','[>>>] Trying XSS payload... BLOCKED'],['r','[>>>] Brute forcing password... LOCKED OUT'],['e','ERROR: Target knows all your tricks.'],['p','LOL — nice try though 😂'],['s',"Tip: try the 'contact' command instead."]],
  secret:()=>[['g','🔓 SECRET UNLOCKED'],['s','Fun facts about Nilesh:'],['p','• Stays up until 2 AM reading CVE reports for fun'],['p','• Drinks 4 cups of chai per CTF challenge'],['g','Achievement unlocked: Curious Mind 🏆']],
- coffee:()=>[['g','☕ Developer Fuel Status:'],['s','Chai consumed today: ████████░░ 80%'],['s','Energy remaining   : ████████████ 100%'],['p','Warning: do NOT disturb during bug hunting sessions'],['r','Current status: In the zone 🎯']]
-};
-function run(raw){const cmd=raw.trim();if(!cmd)return;Hs.push(cmd);hi=Hs.length;add('p','nilesh@kali:~$ '+cmd);const k=cmd.toLowerCase();
- if(k==='clear'){to.innerHTML='';add('p','Terminal cleared.');return}
- const k1=k.split(/\s+/),f=CM[k1[0]]?()=>CM[k1[0]](k1.slice(1)):null;if(!f){add('e','bash: '+cmd+": command not found. Try 'help'.");return}
- f().forEach((r,i)=>setTimeout(()=>add(r[0],r[1]),i*60))}
-ti.addEventListener('keydown',e=>{
- if(e.key==='Enter'){e.preventDefault();run(ti.value);ti.value=''}
- else if(e.key==='ArrowUp'&&Hs.length){e.preventDefault();hi=Math.max(0,hi-1);ti.value=Hs[hi]}
- else if(e.key==='ArrowDown'&&Hs.length){e.preventDefault();hi=Math.min(Hs.length,hi+1);ti.value=Hs[hi]||''}});
-$$('.hint button').forEach(b=>b.addEventListener('click',()=>run(b.dataset.c)));
-add('p','System boot complete.');add('r',"Welcome to Nilesh's interactive terminal. Type help to get started.");
-
-/* contact form */
-$('#cf').addEventListener('submit',async ev=>{
- ev.preventDefault();const b=$('#fb'),st=$('#fstat'),n=$('#fn').value.trim(),e=$('#fe').value.trim(),m=$('#fm').value.trim();
- if(!n||!e||!m){st.textContent='ERROR: fill in name, email and message.';return}
- if($('#hp').value)return;b.disabled=true;b.textContent='TRANSMITTING...';st.textContent='';
- try{const r=await fetch('https://formspree.io/f/xlgawpay',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({name:n,email:e,subject:$('#fs').value,message:m,_gotcha:$('#hp').value})});
-  if(!r.ok)throw 0;b.textContent='MESSAGE SENT ✓';st.textContent='Message delivered. I will reply soon.';ev.target.reset()}
- catch(_){b.textContent='ERROR — TRY AGAIN ✗';st.textContent='Could not send. Check your connection or email me directly.'}
- setTimeout(()=>{b.disabled=false;b.textContent='EXECUTE — SEND MESSAGE'},3000)});
-
-/* resume (print to PDF) */
-function saveResume(){const d=$$('details'),s=d.map(x=>x.open);d.forEach(x=>x.open=true);$$('.rv').forEach(e=>e.classList.add('on'));$$('.t i').forEach(b=>b.style.setProperty('--w',b.dataset.w+'%'));print();setTimeout(()=>d.forEach((x,i)=>x.open=s[i]),500)}
-/* ===== v4 additions ===== */
-const THEMES={violet:'Violet',emerald:'Emerald',sunset:'Sunset',crimson:'Crimson'},ORDER=Object.keys(THEMES);
-function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove('show'),2200)}
-function setTheme(n,quiet){if(!THEMES[n])return false;const r=document.documentElement;r.dataset.theme=n;try{localStorage.setItem('np-theme',n)}catch(_){}
- const cs=getComputedStyle(r);T.c=cs.getPropertyValue('--cr').trim();T.v=cs.getPropertyValue('--vr').trim();window.rdRedraw&&rdRedraw();if(!quiet)toast('Theme: '+THEMES[n]);return true}
-function copy(t){(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>toast('Email copied')).catch(()=>toast(t))}
-
-/* terminal: more commands, args, tab-complete */
-Object.assign(CM,{
- help:()=>[['p','Available commands:'],['c','whoami · skills · projects · contact'],['c','education      — Where I study'],['c','certs          — Certifications'],['c','theme [name]   — violet, emerald, sunset, crimson'],['c','resume         — Save resume as PDF'],['c','nmap · hack · secret · coffee · sudo'],['c','clear          — Clear terminal'],['r','Tip: Tab autocompletes, ↑ shows history, Ctrl+K opens the palette.']],
- education:()=>[['p','=== EDUCATION ==='],['s','B.E. Computer Engineering — Direct Second Year'],['r','  P.V.P.I.T. Bavdhan (College Code: 6122) · 2026–present'],['s','Diploma in Computer Engineering — Completed 2026'],['r','  Ajeenkya DY Patil School of Engineering (MSBTE) · 2023–2026'],['r','  84.94% aggregate · 88.24% final semester · First Class with Distinction']],
- certs:()=>[['p','=== CERTIFICATIONS ==='],['s','• Great Learning — Cybersecurity Course Completion (2024)'],['s','• 3-Day Cybersecurity Intensive Workshop (2024)'],['s','• TechFusion Fest — Participation & Project Demo (2024)'],['s','• Smart India Hackathon (SIH) — Participation (2024)']],
- sudo:()=>[['e','nilesh is not in the sudoers file. This incident will be reported. 😄']],
+ coffee:()=>[['g','☕ Developer Fuel Status:'],['s','Chai consumed today: ████████░░ 80%'],['s','Energy remaining   : ████████████ 100%'],['p','Warning: do NOT disturb during bug hunting sessions'],['r','Current status: In the zone 🎯']],
+ sudo:a=>/hire/.test(a.join(' '))?(setTimeout(()=>openApp('mail'),900),[['g','[sudo] password for recruiter: ********'],['p','Permission granted. Excellent decision. 🎉'],['r','Opening mail...']]):[['e','nilesh is not in the sudoers file. This incident will be reported. 😄'],['r',"Hint: try 'sudo hire nilesh'"]],
  resume:()=>{setTimeout(saveResume,300);return[['p','Opening print dialog — choose "Save as PDF".']]},
- theme:a=>{if(!a[0])return[['p','Themes: '+ORDER.join(', ')],['r','Usage: theme <name>']];return setTheme(a[0])?[['p','Theme set to '+a[0]+'.']]:[['e','Unknown theme. Try: '+ORDER.join(', ')]]}
-});
-ti.addEventListener('keydown',e=>{if(e.key!=='Tab')return;const v=ti.value.toLowerCase();if(!v)return;const m=Object.keys(CM).filter(c=>c.startsWith(v));if(m.length===1){e.preventDefault();ti.value=m[0]}else if(m.length>1){e.preventDefault();add('r',m.join('   '))}});
+ theme:a=>{if(!a[0])return[['p','Themes: '+TN.join(', ')],['r','Usage: theme <name>']];return setTheme(a[0])?[['p','Theme set to '+a[0]+'.']]:[['e','Unknown theme. Try: '+TN.join(', ')]]}
+};
+function term(bd){
+ bd.style.cssText='display:flex;flex-direction:column;padding:0';
+ bd.innerHTML='<div class="to" style="flex:1;overflow:auto;padding:14px 16px"></div><div class="tin"><span>nilesh@np_os:~$</span><input type="text" placeholder="Type a command." autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="send" aria-label="Terminal command"></div>';
+ const to=bd.firstChild,ti=bd.querySelector('input'),H=[];let hi=0;
+ const add=(c,t)=>{const d=document.createElement('div');d.className=c;d.textContent=t;to.appendChild(d);to.scrollTop=to.scrollHeight};
+ function run(raw){const cmd=raw.trim();if(!cmd)return;H.push(cmd);hi=H.length;add('p','nilesh@np_os:~$ '+cmd);const w=cmd.toLowerCase().split(/\s+/);
+  if(w[0]==='clear'){to.innerHTML='';return}
+  const f=CM[w[0]];if(!f){add('e','bash: '+cmd+": command not found. Try 'help'.");return}
+  f(w.slice(1)).forEach((r,i)=>setTimeout(()=>add(r[0],r[1]),i*55))}
+ ti.onkeydown=e=>{
+  if(e.key==='Enter'){e.preventDefault();run(ti.value);ti.value=''}
+  else if(e.key==='ArrowUp'&&H.length){e.preventDefault();hi=Math.max(0,hi-1);ti.value=H[hi]}
+  else if(e.key==='ArrowDown'&&H.length){e.preventDefault();hi=Math.min(H.length,hi+1);ti.value=H[hi]||''}
+  else if(e.key==='Tab'&&ti.value){const v=ti.value.toLowerCase(),m=Object.keys(CM).filter(c=>c.startsWith(v));if(m.length===1){e.preventDefault();ti.value=m[0]}else if(m.length>1){e.preventDefault();add('r',m.join('   '))}}};
+ bd.addEventListener('click',()=>getSelection().isCollapsed&&ti.focus());
+ add('p','NP_OS terminal ready.');add('r',"Type help to get started, or try: sudo hire nilesh");
+ if(innerWidth>700)setTimeout(()=>ti.focus(),50)
+}
 
-/* command palette */
-const ACT=[
- ...[['About','#about'],['Skills','#skills'],['Projects','#projects'],['Certifications','#certs'],['Achievements','#wins'],['Journey','#journey'],['Terminal','#terminal-section'],['Contact','#contact']].map(([n,s])=>({n:'Go to '+n,k:'section',f:()=>$(s).scrollIntoView({behavior:RM?'auto':'smooth'})})),
- ...ORDER.map(t=>({n:'Theme: '+THEMES[t],k:'theme',f:()=>setTheme(t)})),
- {n:'Download resume (PDF)',k:'action',f:saveResume},
- {n:'Copy email address',k:'action',f:()=>copy('patilnilesh1628@gmail.com')},
- {n:'Open GitHub',k:'link',f:()=>open('https://github.com/itsnilesh1','_blank','noopener')},
- {n:'Open LinkedIn',k:'link',f:()=>open('https://www.linkedin.com/in/nileshpatil1628','_blank','noopener')}
-];
-const pal=$('#pal'),pin=$('#pin'),pls=$('#pls');let sel=0,list=ACT;
-function render(){pls.innerHTML='';list.forEach((a,i)=>{const li=document.createElement('li');if(i===sel)li.className='sel';li.innerHTML='<span></span><small></small>';li.firstChild.textContent=a.n;li.lastChild.textContent=a.k;li.addEventListener('click',()=>pick(i));pls.appendChild(li)});if(!list.length){const li=document.createElement('li');li.textContent='No matches';pls.appendChild(li)}const s=pls.children[sel];s&&s.scrollIntoView({block:'nearest'})}
-function openPal(){pal.hidden=false;pin.value='';list=ACT;sel=0;render();pin.focus();document.body.style.overflow='hidden'}
-function closePal(){pal.hidden=true;document.body.style.overflow=''}
-function pick(i){const a=list[i];if(!a)return;closePal();setTimeout(a.f,60)}
-pin.addEventListener('input',()=>{const q=pin.value.toLowerCase();list=ACT.filter(a=>a.n.toLowerCase().includes(q));sel=0;render()});
-pin.addEventListener('keydown',e=>{if(e.key==='ArrowDown'){e.preventDefault();sel=Math.min(list.length-1,sel+1);render()}else if(e.key==='ArrowUp'){e.preventDefault();sel=Math.max(0,sel-1);render()}else if(e.key==='Enter'){e.preventDefault();pick(sel)}});
-pal.addEventListener('click',e=>{if(e.target===pal)closePal()});
-addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();pal.hidden?openPal():closePal()}else if(e.key==='Escape'){if(!pal.hidden)closePal();else if($('#nl').classList.contains('open')){$('#nl').classList.remove('open');document.body.style.overflow=''}}else if(e.key==='/'&&pal.hidden&&!/INPUT|TEXTAREA/.test(document.activeElement.tagName)){e.preventDefault();openPal()}});
-$('#kb').addEventListener('click',openPal);
-$('#th').addEventListener('click',()=>setTheme(ORDER[(ORDER.indexOf(document.documentElement.dataset.theme||'violet')+1)%ORDER.length]));
-$('#rsm').addEventListener('click',e=>{e.preventDefault();$('#nl').classList.remove('open');document.body.style.overflow='';saveResume()});
+/* ---------- mail (Formspree) ---------- */
+function mailInit(bd){const f=bd.querySelector('.cf'),b=f.querySelector('.ex'),st=f.querySelector('.fs');
+ f.onsubmit=async ev=>{ev.preventDefault();const d=Object.fromEntries(new FormData(f));
+  if(!d.n.trim()||!d.e.trim()||!d.m.trim()){st.textContent='ERROR: fill in name, email and message.';return}
+  if(d._gotcha)return;b.disabled=true;b.textContent='TRANSMITTING...';st.textContent='';
+  try{const r=await fetch('https://formspree.io/f/xlgawpay',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({name:d.n,email:d.e,subject:d.s,message:d.m,_gotcha:d._gotcha})});
+   if(!r.ok)throw 0;b.textContent='MESSAGE SENT ✓';st.textContent='Message delivered. I will reply soon.';f.reset()}
+  catch(_){b.textContent='ERROR — TRY AGAIN ✗';st.textContent='Could not send. Check your connection or email me directly.'}
+  setTimeout(()=>{b.disabled=false;b.textContent='EXECUTE — SEND MESSAGE'},3000)}}
 
-/* mobile menu polish */
-$$('#nl li').forEach((l,i)=>l.style.setProperty('--k',i));
-$('#hb').addEventListener('click',()=>{document.body.style.overflow=$('#nl').classList.contains('open')?'hidden':''});
-$$('#nl a').forEach(a=>a.addEventListener('click',()=>{document.body.style.overflow=''}));
+/* ---------- resume (print to PDF) ---------- */
+function saveResume(){const pr=$('#pr');pr.innerHTML='<h1>Nilesh Patil</h1><p>Computer Engineering Student • Cybersecurity • AI/ML • Software Development · Pune, Maharashtra, India · patilnilesh1628@gmail.com · linkedin.com/in/nileshpatil1628 · github.com/itsnilesh1</p>'+['about','skills','projects','certs','wins','journey'].map(k=>'<h3>'+k.toUpperCase()+'</h3>'+R[k]()).join('');
+ pr.querySelectorAll('details').forEach(d=>d.open=true);pr.querySelectorAll('u').forEach(u=>u.style.setProperty('--w',u.dataset.w+'%'));print()}
 
-/* scroll spy + back to top */
-const spy=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;$$('#nl a').forEach(a=>{const on=a.getAttribute('href')==='#'+e.target.id;a.classList.toggle('act',on);on?a.setAttribute('aria-current','true'):a.removeAttribute('aria-current')})}),{rootMargin:'-45% 0px -50% 0px'});
-$$('section[id]').forEach(s=>spy.observe(s));
-addEventListener('scroll',()=>$('#top-btn').classList.toggle('show',scrollY>700),{passive:true});
-$('#top-btn').addEventListener('click',()=>scrollTo({top:0,behavior:RM?'auto':'smooth'}));
+/* ---------- matrix rain ---------- */
+(function(){if(RM)return;const c=$('#rain'),x=c.getContext('2d');let w,h,col,y;const rs=()=>{w=c.width=innerWidth;h=c.height=innerHeight;col=Math.ceil(w/16);y=Array.from({length:col},()=>Math.random()*h/16)};rs();addEventListener('resize',rs);
+ setInterval(()=>{if(document.hidden)return;x.fillStyle='rgba(6,7,13,.12)';x.fillRect(0,0,w,h);x.fillStyle='rgb('+getComputedStyle(document.documentElement).getPropertyValue('--ar')+')';x.font='14px monospace';
+  y.forEach((v,i)=>{x.fillText(String.fromCharCode(0x30A0+Math.random()*60|0),i*16,v*16);y[i]=v*16>h&&Math.random()>.975?0:v+1})},70)})();
 
-/* heading decrypt effect */
-if(!RM){const G='!<>-_/[]{}=+*^?#01',hs=new IntersectionObserver((es,o)=>es.forEach(e=>{if(!e.isIntersecting)return;o.unobserve(e.target);const el=e.target,t=el.textContent,n=18;el.setAttribute('aria-label',t);let f=0;const iv=setInterval(()=>{f++;el.textContent=[...t].map((c,i)=>c===' '||i<f/n*t.length?c:G[Math.random()*G.length|0]).join('');if(f>=n){clearInterval(iv);el.textContent=t}},35)}),{threshold:.6});$$('.sec h2').forEach(x=>hs.observe(x))}
-
-/* tilt + magnetic buttons (mouse only) */
-if(FINE&&!RM){
- $$('.card').forEach(c=>{c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.setProperty('--ry',x*8+'deg');c.style.setProperty('--rx',-y*8+'deg')});c.addEventListener('pointerleave',()=>{c.style.setProperty('--rx','0deg');c.style.setProperty('--ry','0deg')})});
- $$('.cta .btn,.exec').forEach(b=>{b.addEventListener('pointermove',e=>{const r=b.getBoundingClientRect();b.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.12}px,${(e.clientY-r.top-r.height/2)*.2-2}px)`});b.addEventListener('pointerleave',()=>{b.style.transform=''})})}
-
-/* live clock */
-(function(){const el=$('#clk'),f=()=>{el.textContent=new Date().toLocaleTimeString('en-GB',{timeZone:'Asia/Kolkata',hour12:false})};f();setInterval(f,1000)})();
-
-/* restore saved theme */
-(function(){let s='violet';try{s=localStorage.getItem('np-theme')||'violet'}catch(_){}setTheme(THEMES[s]?s:'violet',true)})();
-
+/* ---------- boot -> login -> desktop ---------- */
+function desktop(){$('#boot').remove();$('#os').classList.remove('hide');$('#tk').classList.remove('hide');openApp('about');if(innerWidth>1000)setTimeout(()=>openApp('term'),500)}
+(function(){
+ if(sessionStorage.getItem('np-in')||RM){desktop();return}
+ const L=['NP_OS BIOS v8.0 — memory check... 16384K OK','Detecting hardware... RFID RC522, ESP8266, webcam [OK]','Loading security modules... [OK]','Mounting /home/nilesh... [OK]','Starting intrusion watch... [OK]','Welcome.'],box=$('#bl');let i=0,done=false;
+ const toLogin=()=>{if(done)return;done=true;box.classList.add('hide');const l=$('#login');l.style.display='block';$('#pw').focus()};
+ $('#boot').addEventListener('click',e=>{if(!e.target.closest('#login'))toLogin()});
+ (function step(){if(done)return;if(i<L.length){const d=document.createElement('div');d.textContent='> '+L[i++];box.appendChild(d);setTimeout(step,300)}else setTimeout(toLogin,400)})();
+ $('#login').onsubmit=e=>{e.preventDefault();const ok=$('#pw').value.toLowerCase().replace(/\W/g,'')==='hireme';$('#lm').textContent=ok?'ACCESS GRANTED. Good call.':'Wrong password... but you look hireable. Letting you in.';sessionStorage.setItem('np-in','1');setTimeout(desktop,ok?500:1100)}
+})();
 </script>
 </body>
 </html>
